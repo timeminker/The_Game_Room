@@ -32,6 +32,17 @@ function App() {
         <li onClick={connectView}>Connect 4</li>
         <li>Tic Tac Toe</li>
         <li>Checkers</li>
+        <li>Memory</li>
+        <li>Battleship</li>
+        <li>Trivia</li>
+        <li>Dodging/Asteroid/Frogger</li>
+        <li>Hangman</li>
+      </ul>
+      <br/>
+      <h2>To Do (eventually):</h2>
+      <ul>
+        <li>Minesweeper</li>
+        <li>Pong</li>
       </ul>
       </div>
       : null}
