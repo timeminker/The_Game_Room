@@ -36,3 +36,45 @@
     transform: rotate(360deg);
   }
 }
+
+
+.Connect4{
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width:600px;
+  height: 500px;
+  border:3px solid red;
+}
+
+.Connect4numbers{
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width:600px;
+}
+
+.Connect4column{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 13.4%;
+  font-weight: bold;
+  border: 2px solid white;
+}
+
+.Connect4cell{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13.4%;
+  height:15%;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+#cell1{
+
+}
