@@ -1,24 +1,74 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Connect4 from './components/connect4.js'
+import {useState, useEffect} from 'react'
 
 function App() {
+  const [view, setView] = useState('main')
+
+
+  const connectView = () => {
+    numbers.map((connectNumbers)=>{
+    console.log(connectNumbers)
+  })
+    if (view === 'main') {
+    setView('connect4')
+  } else {
+    setView('main')
+  }
+  }
+
+  const numbers = [1 , 2, 3, 4, 5, 6, 7 ,8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ,40, 41 ,42 ]
+
+  useEffect(() => {
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+      {view === 'main' ?
+        <div>
+        <h1>Hello World!</h1>
+      <br/>
+      <p>Welcome to The Game Room! Where you can play all of your favorite (not all) games!</p>
+      <br/>
+      <h2>You can choose from the following games:</h2>
+      <ul>
+        <li onClick={connectView}>Connect 4</li>
+        <li>Tic Tac Toe</li>
+        <li>Checkers</li>
+        <li>Memory</li>
+        <li>Battleship</li>
+        <li>Trivia</li>
+        <li>Dodging/Asteroid/Frogger</li>
+        <li>Hangman</li>
+      </ul>
+      <br/>
+      <h2>To Do (eventually):</h2>
+      <ul>
+        <li>Minesweeper</li>
+        <li>Pong</li>
+      </ul>
+      </div>
+      : null}
+          {view === 'connect4' ?
+          <div class="Connect4">
+            <div class="Connect4numbers">
+              <div class = "Connect4column">1</div>
+              <div class = "Connect4column">2</div>
+              <div class = "Connect4column">3</div>
+              <div class = "Connect4column">4</div>
+              <div class = "Connect4column">5</div>
+              <div class = "Connect4column">6</div>
+              <div class = "Connect4column">7</div>
+            </div>
+            {numbers.map((connectNumbers)=>{
+              return(
+                  <Connect4 connectView={connectView} connectNumbers={connectNumbers}/>
+              )
+            })}
+          </div> : null}
+    </>
   );
 }
 
