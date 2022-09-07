@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Connect4 from './components/connect4.js'
+import Memory from './components/memory'
 import {useState, useEffect} from 'react'
 
 function App() {
@@ -12,10 +13,18 @@ function App() {
     console.log(connectNumbers)
   })
     if (view === 'main') {
-    setView('connect4')
-  } else {
-    setView('main')
+      setView('connect4')
+    } else {
+      setView('main')
+    }
   }
+
+  const memoryView = () => {
+    if (view === 'main') {
+      setView('memory')
+    } else {
+      setView('main')
+    }
   }
 
   const numbers = [1 , 2, 3, 4, 5, 6, 7 ,8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ,40, 41 ,42 ]
@@ -37,7 +46,7 @@ function App() {
         <li onClick={connectView}>Connect 4</li>
         <li>Tic Tac Toe</li>
         <li>Checkers</li>
-        <li>Memory</li>
+        <li onClick={memoryView}>Memory</li>
         <li>Battleship</li>
         <li>Trivia</li>
         <li>Dodging/Asteroid/Frogger</li>
@@ -50,6 +59,12 @@ function App() {
         <li>Pong</li>
       </ul>
       </div>
+      : null}
+      {view === 'connect4' ?
+        <Connect4 connectView={connectView}/>
+      : null}
+      {view === 'memory' ?
+        <Memory connectView={memoryView}/>
       : null}
           {view === 'connect4' ?
           <div class="Connect4">
