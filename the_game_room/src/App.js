@@ -92,7 +92,7 @@ function App() {
       : null}
 
           {view === 'connect4' ?
-          <div className="Connect4">
+          <div>
             <div className="Connect4numbers">
               <div className = "Connect4column">1</div>
               <div className = "Connect4column">2</div>
@@ -102,12 +102,14 @@ function App() {
               <div className = "Connect4column">6</div>
               <div className = "Connect4column">7</div>
             </div>
-            {numbers.map((connectNumbers)=>{
-              return(
-                  <Connect4 connectView={connectView} connectNumbers={connectNumbers} playerTurn={playerTurn} currentTurn={currentTurn}/>
-              )
-            })}
-          </div> : null}
+            <div className="Connect4">
+              {numbers.map((connectNumbers)=>{
+                return(
+                    <Connect4 connectView={connectView} connectNumbers={connectNumbers} playerTurn={playerTurn} currentTurn={currentTurn}/>
+                )
+              })}
+            </div>
+          </div>: null}
 
       {view === 'trivia' ?
         <Trivia triviaView={triviaView} trivia={trivia} getTrivia={getTrivia}/>
