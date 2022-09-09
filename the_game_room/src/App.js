@@ -48,7 +48,7 @@ function App() {
 
   //TRIVIA API CALLS
   const getTrivia = () => {
-    axios.get('https://the-trivia-api.com/api/questions?limit=1&difficulty=easy').then((response) => {
+    axios.get('https://the-trivia-api.com/api/questions?limit=5&difficulty=easy').then((response) => {
       setTrivia(response.data)
     })
   }
@@ -110,7 +110,7 @@ function App() {
           </div> : null}
 
       {view === 'trivia' ?
-        <Trivia triviaView={triviaView} trivia={trivia}/>
+        <Trivia triviaView={triviaView} trivia={trivia} getTrivia={getTrivia}/>
       : null}
 
     </>
