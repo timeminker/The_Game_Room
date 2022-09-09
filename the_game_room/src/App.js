@@ -92,15 +92,15 @@ function App() {
       : null}
 
           {view === 'connect4' ?
-          <div class="Connect4">
-            <div class="Connect4numbers">
-              <div class = "Connect4column">1</div>
-              <div class = "Connect4column">2</div>
-              <div class = "Connect4column">3</div>
-              <div class = "Connect4column">4</div>
-              <div class = "Connect4column">5</div>
-              <div class = "Connect4column">6</div>
-              <div class = "Connect4column">7</div>
+          <div className="Connect4">
+            <div className="Connect4numbers">
+              <div className = "Connect4column">1</div>
+              <div className = "Connect4column">2</div>
+              <div className = "Connect4column">3</div>
+              <div className = "Connect4column">4</div>
+              <div className = "Connect4column">5</div>
+              <div className = "Connect4column">6</div>
+              <div className = "Connect4column">7</div>
             </div>
             {numbers.map((connectNumbers)=>{
               return(
