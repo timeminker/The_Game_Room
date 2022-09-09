@@ -18,7 +18,50 @@ import {useState} from 'react'
 
     return (
       <>
-        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell">{props.connectNumbers}</div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+        <div style={{backgroundColor: color === 'red' ? 'red' : color === 'blue' ? 'blue' : ''}}  onClick={processTurn}  className="Connect4cell"></div>
+
+
       </>
     )
   }
