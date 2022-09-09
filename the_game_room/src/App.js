@@ -10,12 +10,10 @@ function App() {
   const [view, setView] = useState('main')
   const [trivia, setTrivia] = useState([])
   const [playerTurn, setPlayerTurn] = useState(1)
-
+  const [color, setColor] = useState('red')
 
 // VIEWS
   const connectView = () => {
-    numbers.map((connectNumbers)=>{
-  })
     if (view === 'main') {
       setView('connect4')
     } else {
@@ -40,10 +38,25 @@ function App() {
   }
 
   // CONNECT4
-  const numbers = [1 , 2, 3, 4, 5, 6, 7 ,8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 ,40, 41 ,42 ]
+
+
+  const columns = [[],[],[],[],[],[],[]]
 
   const currentTurn = () => {
     setPlayerTurn(playerTurn+1)
+  }
+
+  const columnClick = (column, number) => {
+    // if(playerTurn % 2 === 0){
+    //   setColor('red')
+    // } else {
+    //   setColor('blue')
+    // }
+    // setPlayerTurn(playerTurn+1)
+    // if(column[0] !== 1){
+    //   numbers.splice(number+34,1,color)
+    // }
+    // console.log(numbers)
   }
 
   //TRIVIA API CALLS
@@ -94,20 +107,16 @@ function App() {
           {view === 'connect4' ?
           <div>
             <div className="Connect4numbers">
-              <div className = "Connect4column">1</div>
-              <div className = "Connect4column">2</div>
-              <div className = "Connect4column">3</div>
-              <div className = "Connect4column">4</div>
-              <div className = "Connect4column">5</div>
-              <div className = "Connect4column">6</div>
-              <div className = "Connect4column">7</div>
+              <div onClick={()=>{columnClick()}} className = "Connect4column">1</div>
+              <div onClick={()=>{columnClick()}}className = "Connect4column">2</div>
+              <div onClick={()=>{columnClick()}}className = "Connect4column">3</div>
+              <div onClick={()=>{columnClick()}}className = "Connect4column">4</div>
+              <div onClick={()=>{columnClick()}}className = "Connect4column">5</div>
+              <div onClick={()=>{columnClick()}}className = "Connect4column">6</div>
+              <div onClick={()=>{columnClick()}}className = "Connect4column">7</div>
             </div>
             <div className="Connect4">
-              {numbers.map((connectNumbers)=>{
-                return(
-                    <Connect4 connectView={connectView} connectNumbers={connectNumbers} playerTurn={playerTurn} currentTurn={currentTurn}/>
-                )
-              })}
+                    <Connect4 connectView={connectView} playerTurn={playerTurn} currentTurn={currentTurn}/>
             </div>
           </div>: null}
 
