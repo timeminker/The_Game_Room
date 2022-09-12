@@ -9,8 +9,7 @@ import {useState, useEffect} from 'react'
 function App() {
   const [view, setView] = useState('main')
   const [trivia, setTrivia] = useState([])
-  const [playerTurn, setPlayerTurn] = useState(1)
-  const [color, setColor] = useState('red')
+
 
 // VIEWS
   const connectView = () => {
@@ -38,25 +37,28 @@ function App() {
   }
 
   // CONNECT4
+  const [playerTurn, setPlayerTurn] = useState(1)
+  const [color, setColor] = useState('red')
+  const [columns, setColumns] = useState([
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+  ])
 
-
-  const columns = [[],[],[],[],[],[],[]]
-
-  const currentTurn = () => {
-    setPlayerTurn(playerTurn+1)
-  }
-
-  const columnClick = (column, number) => {
-    // if(playerTurn % 2 === 0){
-    //   setColor('red')
-    // } else {
-    //   setColor('blue')
-    // }
-    // setPlayerTurn(playerTurn+1)
-    // if(column[0] !== 1){
-    //   numbers.splice(number+34,1,color)
-    // }
-    // console.log(numbers)
+  const columnClick = (number) => {
+    if(columns[number].length < 6){
+      setPlayerTurn(playerTurn+1)
+        if(playerTurn % 2 == 0){
+          setColor('red')
+        } else{
+          setColor('blue')
+        }
+      columns[number].push(color)
+    }
   }
 
   //TRIVIA API CALLS
@@ -104,26 +106,13 @@ function App() {
         <Memory connectView={memoryView}/>
       : null}
 
-          {view === 'connect4' ?
-          <div>
-            <div className="Connect4numbers">
-              <div onClick={()=>{columnClick()}} className = "Connect4column">1</div>
-              <div onClick={()=>{columnClick()}}className = "Connect4column">2</div>
-              <div onClick={()=>{columnClick()}}className = "Connect4column">3</div>
-              <div onClick={()=>{columnClick()}}className = "Connect4column">4</div>
-              <div onClick={()=>{columnClick()}}className = "Connect4column">5</div>
-              <div onClick={()=>{columnClick()}}className = "Connect4column">6</div>
-              <div onClick={()=>{columnClick()}}className = "Connect4column">7</div>
-            </div>
-            <div className="Connect4">
-                    <Connect4 connectView={connectView} playerTurn={playerTurn} currentTurn={currentTurn}/>
-            </div>
-          </div>: null}
+      {view === 'connect4' ?
+        <Connect4 connectView={connectView} playerTurn={playerTurn} columnClick={columnClick} columns={columns}/>
+      : null}
 
       {view === 'trivia' ?
         <Trivia triviaView={triviaView} trivia={trivia} getTrivia={getTrivia}/>
       : null}
-
     </>
   );
 }
