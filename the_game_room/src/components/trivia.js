@@ -39,14 +39,33 @@ const Trivia = (props) => {
     <>
       {view === 'wantToPlay' ?
       <div>
+      <br/>
+        <div className="dropdown">
+          <button className="dropbtn">SELECT NUMBER OF QUESTIONS</button>
+            <div className="dropdown-content">
+              <a href="#">5</a>
+              <a href="#">10</a>
+              <a href="#">20</a>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div className="dropdown">
+          <button className="dropbtn">SELECT DIFFICULTY</button>
+            <div className="dropdown-content">
+              <a href="#">EASY</a>
+              <a href="#">MEDIUM</a>
+              <a href="#">HARD</a>
+            </div>
+        </div>
         <h1>Are you ready to play trivia?</h1>
-        <button onClick={changeView}>Yes!</button>
-        <button onClick={props.triviaView}>No!</button>
+        <button className="dropbtn" onClick={changeView}>Yes!</button>
+        <button className="dropbtn" onClick={props.triviaView}>No!</button>
       </div>
       : null }
 
       {view === 'readyToPlay' ?
-        <div className='trivia-body'>
+        <div classNameName='trivia-body'>
         <h1>Trivia</h1>
         <br/>
         <br/>
