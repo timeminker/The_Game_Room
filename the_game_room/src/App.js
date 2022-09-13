@@ -61,9 +61,12 @@ function App() {
     }
   }
 
-  //TRIVIA API CALLS
+  //TRIVIA
+  const [numOfQuestions, setNumOfQuestions] = useState(5)
+  const [difficulty, setDifficulty] = useState('easy')
+
   const getTrivia = () => {
-    axios.get('https://the-trivia-api.com/api/questions?limit=5&difficulty=easy').then((response) => {
+    axios.get(`https://the-trivia-api.com/api/questions?limit=${numOfQuestions}&difficulty=${difficulty}`).then((response) => {
       setTrivia(response.data)
     })
   }
