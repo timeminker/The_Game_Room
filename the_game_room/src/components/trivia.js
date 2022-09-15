@@ -4,6 +4,7 @@ import {useState} from 'react'
 const Trivia = (props) => {
   let [view, setView] = useState('wantToPlay')
   let [questionNumber, setQuestionNumber] = useState(0)
+  let [score, setScore] = useState(0)
 
   let answers = [props.trivia[questionNumber].incorrectAnswers[0], props.trivia[questionNumber].incorrectAnswers[1], props.trivia[questionNumber].incorrectAnswers[2], props.trivia[questionNumber].correctAnswer]
 
@@ -23,6 +24,7 @@ const Trivia = (props) => {
     if (answer == props.trivia[questionNumber].correctAnswer) {
       console.log(answer)
       setQuestionNumber(questionNumber+1)
+      setScore(score+10)
       console.log(questionNumber);
     } else {
       console.log('WRONG');
@@ -73,6 +75,7 @@ const Trivia = (props) => {
         <div className='trivia-body'>
         <h1>Trivia</h1>
         <br/>
+        <h1>Your Score: {score}</h1>
         <br/>
         <p>Category: {props.trivia[questionNumber].category}</p>
         <h2>Question: {props.trivia[questionNumber].question}</h2>
