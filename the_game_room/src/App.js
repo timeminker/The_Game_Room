@@ -64,6 +64,8 @@ function App() {
   const checkWin = () => {
     checkVertical()
     checkHorizontal()
+    leftDiagnol()
+    rightDiagnol()
   }
 
   const checkVertical = () =>{
@@ -86,10 +88,25 @@ function App() {
     }
   }
 
-  const checkDiagnol = () => {
-
+  const leftDiagnol = () =>{
+    for(let i = 0; i <= 3; i++){
+      for(let j = 0; j <= 2;j++){
+        if(columns[i][j] == color && columns[i+1][j+1] == color && columns[i+2][j+2] == color && columns[i+3][j+3] == color){
+          console.log(color + ' wins!')
+        }
+      }
+    }
   }
-  
+
+    const rightDiagnol = () =>{
+      for(let i = columns.length-1;i >= 3;i--){
+        for(let j = 0; j<=2; j++){
+          if(columns[i][j] == color && columns[i-1][j+1] == color && columns[i-2][j+2] == color && columns[i-3][j+3] == color){
+            console.log(color + ' wins!')
+          }
+        }
+      }
+    }
   //TRIVIA
   const [numOfQuestions, setNumOfQuestions] = useState(5)
   const [difficulty, setDifficulty] = useState('easy')
