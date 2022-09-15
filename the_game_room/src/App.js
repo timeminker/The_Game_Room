@@ -99,6 +99,14 @@ function App() {
     })
   }
 
+  const submitNumber = () => {
+    setNumOfQuestions()
+  }
+
+  const submitDifficulty = () => {
+    setDifficulty()
+  }
+
   // USEEFFECT
   useEffect(() => {
     getTrivia()
@@ -141,8 +149,10 @@ function App() {
         <Connect4 connectView={connectView} playerTurn={playerTurn} columnClick={columnClick} columns={columns}/>
       : null}
 
+
+
       {view === 'trivia' ?
-        <Trivia triviaView={triviaView} trivia={trivia} getTrivia={getTrivia}/>
+        <Trivia triviaView={triviaView} trivia={trivia} getTrivia={getTrivia} numOfQuestions={numOfQuestions} difficulty={difficulty} setNumOfQuestions={setNumOfQuestions} setDifficulty={setDifficulty}/>
       : null}
     </>
   );
