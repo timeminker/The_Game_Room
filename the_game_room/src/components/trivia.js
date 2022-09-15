@@ -3,8 +3,8 @@ import {useState} from 'react'
 
 const Trivia = (props) => {
   let [view, setView] = useState('wantToPlay')
+  let [questionNumber, setQuestionNumber] = useState(0)
 
-  let questionNumber = 0
   let answers = [props.trivia[questionNumber].incorrectAnswers[0], props.trivia[questionNumber].incorrectAnswers[1], props.trivia[questionNumber].incorrectAnswers[2], props.trivia[questionNumber].correctAnswer]
 
   const shuffleArray = array => {
@@ -22,11 +22,11 @@ const Trivia = (props) => {
     event.preventDefault()
     if (answer == props.trivia[questionNumber].correctAnswer) {
       console.log(answer)
-      questionNumber++
+      setQuestionNumber(questionNumber+1)
       console.log(questionNumber);
     } else {
       console.log('WRONG');
-      questionNumber++
+      setQuestionNumber(questionNumber+1)
       console.log(questionNumber);
     }
   }
