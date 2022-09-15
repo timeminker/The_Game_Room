@@ -46,7 +46,7 @@ function App() {
     [],
     [],
     [],
-    [],
+    []
   ])
 
   const columnClick = (number) => {
@@ -58,9 +58,37 @@ function App() {
           setColor('blue')
         }
       columns[number].push(color)
+    } checkWin()
+  }
+
+  const checkWin = () => {
+    checkVertical()
+    checkHorizontal()
+  }
+
+  const checkVertical = () =>{
+    for(let i = 0; i<columns.length; i++){
+      for(let j = 0; j <= 2; j++){
+        if(columns[i][j] == color && columns[i][j+1] == color && columns[i][j+2] == color && columns[i][j+3] == color){
+          console.log(color + ' wins!')
+        }
+      }
     }
   }
 
+  const checkHorizontal = () =>{
+    for(let i = 0; i<=3; i++){
+      for(let j = 0; j<columns.length;j++){
+        if(columns[i][j] == color && columns[i+1][j] == color && columns[i+2][j] == color && columns[i+3][j] == color ){
+          console.log(color + ' wins!')
+        }
+      }
+    }
+  }
+
+  const checkDiagnol = () => {
+
+  }
   //TRIVIA
   const [numOfQuestions, setNumOfQuestions] = useState(5)
   const [difficulty, setDifficulty] = useState('easy')
@@ -114,7 +142,7 @@ function App() {
       : null}
 
       {view === 'trivia' ?
-        <Trivia triviaView={triviaView} trivia={trivia} getTrivia={getTrivia} setNumOfQuestions={setNumOfQuestions} setDifficulty={setDifficulty}/>
+        <Trivia triviaView={triviaView} trivia={trivia} getTrivia={getTrivia}/>
       : null}
     </>
   );
