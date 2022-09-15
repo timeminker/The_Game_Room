@@ -89,6 +89,7 @@ function App() {
   const checkDiagnol = () => {
 
   }
+  
   //TRIVIA
   const [numOfQuestions, setNumOfQuestions] = useState(5)
   const [difficulty, setDifficulty] = useState('easy')
