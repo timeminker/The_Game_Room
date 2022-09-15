@@ -114,7 +114,7 @@ function App() {
       : null}
 
       {view === 'trivia' ?
-        <Trivia triviaView={triviaView} trivia={trivia} getTrivia={getTrivia}/>
+        <Trivia triviaView={triviaView} trivia={trivia} getTrivia={getTrivia} setNumOfQuestions={setNumOfQuestions} setDifficulty={setDifficulty}/>
       : null}
     </>
   );

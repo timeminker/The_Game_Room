@@ -31,8 +31,17 @@ const Trivia = (props) => {
     }
   }
 
-  const changeView = () => {
+  const playTrivia = () => {
+    props.getTrivia()
     setView('readyToPlay')
+  }
+
+  const submitNumber = () => {
+    props.setNumOfQuestions()
+  }
+
+  const submitDifficulty = () => {
+    props.setDifficulty()
   }
 
   return (
@@ -40,26 +49,26 @@ const Trivia = (props) => {
       {view === 'wantToPlay' ?
       <div>
       <br/>
-        <div className="dropdown">
-          <button className="dropbtn">SELECT NUMBER OF QUESTIONS</button>
-            <div className="dropdown-content">
-              <a href="#">5</a>
-              <a href="#">10</a>
-              <a href="#">20</a>
-            </div>
-        </div>
-        <br/>
-        <br/>
-        <div className="dropdown">
-          <button className="dropbtn">SELECT DIFFICULTY</button>
-            <div className="dropdown-content">
-              <a href="#">EASY</a>
-              <a href="#">MEDIUM</a>
-              <a href="#">HARD</a>
-            </div>
-        </div>
+        <form onSubmit={submitNumber}>
+          <label>Choose number of questions:</label>
+          <select>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+          </select>
+          <input type="submit" value="Submit" />
+        </form>
+        <form onSubmit={submitDifficulty}>
+          <label>Choose difficulty:</label>
+          <select>
+            <option value="easy">EASY</option>
+            <option value="medium">MEDIUM</option>
+            <option value="hard">HARD</option>
+          </select>
+          <input type="submit" value="Submit" />
+        </form>
         <h1>Are you ready to play trivia?</h1>
-        <button className="dropbtn" onClick={changeView}>Yes!</button>
+        <button className="dropbtn" onClick={playTrivia}>Yes!</button>
         <button className="dropbtn" onClick={props.triviaView}>No!</button>
       </div>
       : null }
@@ -91,3 +100,23 @@ const Trivia = (props) => {
 }
 
 export default Trivia
+
+
+// <div className="dropdown">
+//   <button className="dropbtn" onChange={submitNumber}>SELECT NUMBER OF QUESTIONS</button>
+//     <div className="dropdown-content">
+//       <a value="5">5</a>
+//       <a value="10">10</a>
+//       <a value="20">20</a>
+//     </div>
+// </div>
+// <br/>
+// <br/>
+// <div className="dropdown">
+//   <button className="dropbtn" onChange={submitDifficulty}>SELECT DIFFICULTY</button>
+//     <div className="dropdown-content">
+//       <a value="easy">EASY</a>
+//       <a value="medium">MEDIUM</a>
+//       <a value="hard">HARD</a>
+//     </div>
+// </div>
