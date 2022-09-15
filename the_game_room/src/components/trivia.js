@@ -36,45 +36,41 @@ const Trivia = (props) => {
     setView('readyToPlay')
   }
 
-  const submitNumber = () => {
-    props.setNumOfQuestions()
-  }
-
-  const submitDifficulty = () => {
-    props.setDifficulty()
-  }
-
   return (
     <>
       {view === 'wantToPlay' ?
-      <div>
-      <br/>
-        <form onSubmit={submitNumber}>
-          <label>Choose number of questions:</label>
-          <select>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-          </select>
-          <input type="submit" value="Submit" />
-        </form>
-        <form onSubmit={submitDifficulty}>
-          <label>Choose difficulty:</label>
-          <select>
-            <option value="easy">EASY</option>
-            <option value="medium">MEDIUM</option>
-            <option value="hard">HARD</option>
-          </select>
-          <input type="submit" value="Submit" />
-        </form>
-        <h1>Are you ready to play trivia?</h1>
-        <button className="dropbtn" onClick={playTrivia}>Yes!</button>
-        <button className="dropbtn" onClick={props.triviaView}>No!</button>
-      </div>
-      : null }
+        <div>
+        <br/>
+          <form>
+            <label>Choose number of questions:</label>
+            <select value={props.numOfQuestions} onChange={(e) => {
+              props.setNumOfQuestions(e.target.value)
+            }}>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+            </select>
+
+          </form>
+          <form>
+            <label>Choose difficulty:</label>
+            <select value={props.difficulty} onChange={(e) => {
+              props.setDifficulty(e.target.value)
+            }}>
+              <option value="easy">EASY</option>
+              <option value="medium">MEDIUM</option>
+              <option value="hard">HARD</option>
+            </select>
+
+          </form>
+          <h1>Are you ready to play trivia?</h1>
+          <button className="dropbtn" onClick={playTrivia}>Yes!</button>
+          <button className="dropbtn" onClick={props.triviaView}>No!</button>
+        </div>
+      : null}
 
       {view === 'readyToPlay' ?
-        <div classNameName='trivia-body'>
+        <div className='trivia-body'>
         <h1>Trivia</h1>
         <br/>
         <br/>
@@ -94,7 +90,7 @@ const Trivia = (props) => {
         <br/>
         <button onClick={props.triviaView}>Go Back</button>
       </div>
-      : null}
+    : null}
     </>
   )
 }
@@ -120,3 +116,34 @@ export default Trivia
 //       <a value="hard">HARD</a>
 //     </div>
 // </div>
+
+// {view === 'wantToPlay' ?
+// <div>
+// <br/>
+//   <form onSubmit={submitNumber}>
+//     <label>Choose number of questions:</label>
+//     <select>
+//       <option value="5">5</option>
+//       <option value="10">10</option>
+//       <option value="20">20</option>
+//     </select>
+//     <input type="submit" value="Submit" />
+//   </form>
+//   <form onSubmit={submitDifficulty}>
+//     <label>Choose difficulty:</label>
+//     <select>
+//       <option value="easy">EASY</option>
+//       <option value="medium">MEDIUM</option>
+//       <option value="hard">HARD</option>
+//     </select>
+//     <input type="submit" value="Submit" />
+//   </form>
+//   <h1>Are you ready to play trivia?</h1>
+//   <button className="dropbtn" onClick={playTrivia}>Yes!</button>
+//   <button className="dropbtn" onClick={props.triviaView}>No!</button>
+// </div>
+// : null }
+//
+// {view === 'readyToPlay' ?
+//
+// : null}
