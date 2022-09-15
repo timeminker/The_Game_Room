@@ -21,21 +21,31 @@ const Trivia = (props) => {
 
   const checkAnswer = (answer, event) => {
     event.preventDefault()
-    if (answer == props.trivia[questionNumber].correctAnswer) {
-      console.log(answer)
-      setQuestionNumber(questionNumber+1)
-      setScore(score+10)
-      console.log(questionNumber);
+    if (questionNumber <= props.numOfQuestions-2) {
+      if (answer == props.trivia[questionNumber].correctAnswer) {
+        console.log(answer)
+        setQuestionNumber(questionNumber+1)
+        setScore(score+10)
+        console.log(questionNumber);
+      } else {
+        console.log('WRONG');
+        setQuestionNumber(questionNumber+1)
+        console.log(questionNumber);
+      }
     } else {
-      console.log('WRONG');
-      setQuestionNumber(questionNumber+1)
-      console.log(questionNumber);
+      setView('gameOver')
     }
   }
 
   const playTrivia = () => {
     props.getTrivia()
     setView('readyToPlay')
+  }
+
+  const playAgain = () => {
+    setView('wantToPlay')
+    setScore(0)
+    setQuestionNumber(0)
   }
 
   return (
@@ -48,9 +58,9 @@ const Trivia = (props) => {
             <select value={props.numOfQuestions} onChange={(e) => {
               props.setNumOfQuestions(e.target.value)
             }}>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="20">20</option>
+              <option value="6">5</option>
+              <option value="11">10</option>
+              <option value="21">20</option>
             </select>
 
           </form>
@@ -86,13 +96,26 @@ const Trivia = (props) => {
             <>
               <button onClick={(event) => {
                 checkAnswer(answer, event)
-              }}>{answer}</button>
+              }} key={answer.id}>{answer}</button>
             </>
           )
         })}
         <br/>
         <button onClick={props.triviaView}>Go Back</button>
       </div>
+    : null}
+
+    {view === 'gameOver' ?
+    <div>
+      <h1>GAME OVER</h1>
+      <br/>
+      <br/>
+      <h4>Your score was {score} pounts. Great job!</h4>
+      <br/>
+      <br/>
+      <button className="dropbtn" onClick={playAgain}>Play Again</button>
+      <button className="dropbtn" onClick={props.triviaView}>Return to Main Menu</button>
+    </div>
     : null}
     </>
   )
