@@ -39,6 +39,7 @@ function App() {
   // CONNECT4
   const [playerTurn, setPlayerTurn] = useState(1)
   const [color, setColor] = useState('red')
+  const [gameState, setGameState] = useState(true)
   const [columns, setColumns] = useState([
     [],
     [],
@@ -50,15 +51,17 @@ function App() {
   ])
 
   const columnClick = (number) => {
-    if(columns[number].length < 6){
-      setPlayerTurn(playerTurn+1)
-        if(playerTurn % 2 == 0){
-          setColor('red')
-        } else{
-          setColor('blue')
-        }
-      columns[number].push(color)
-    } checkWin()
+    if(gameState){
+      if(columns[number].length < 6){
+        setPlayerTurn(playerTurn+1)
+          if(playerTurn % 2 == 0){
+            setColor('red')
+          } else{
+            setColor('blue')
+          }
+        columns[number].push(color)
+      } checkWin()
+    }
   }
 
   const checkWin = () => {
@@ -73,6 +76,7 @@ function App() {
       for(let j = 0; j <= 2; j++){
         if(columns[i][j] == color && columns[i][j+1] == color && columns[i][j+2] == color && columns[i][j+3] == color){
           console.log(color + ' wins!')
+          setGameState(false)
         }
       }
     }
@@ -83,6 +87,7 @@ function App() {
       for(let j = 0; j<columns.length;j++){
         if(columns[i][j] == color && columns[i+1][j] == color && columns[i+2][j] == color && columns[i+3][j] == color ){
           console.log(color + ' wins!')
+          setGameState(false)
         }
       }
     }
@@ -93,6 +98,7 @@ function App() {
       for(let j = 0; j <= 2;j++){
         if(columns[i][j] == color && columns[i+1][j+1] == color && columns[i+2][j+2] == color && columns[i+3][j+3] == color){
           console.log(color + ' wins!')
+          setGameState(false)
         }
       }
     }
@@ -103,9 +109,23 @@ function App() {
         for(let j = 0; j<=2; j++){
           if(columns[i][j] == color && columns[i-1][j+1] == color && columns[i-2][j+2] == color && columns[i-3][j+3] == color){
             console.log(color + ' wins!')
+            setGameState(false)
           }
         }
       }
+    }
+
+    const clear = () =>{
+      setColumns([
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ])
+      setGameState(true)
     }
   //TRIVIA
   const [numOfQuestions, setNumOfQuestions] = useState(5)
@@ -164,7 +184,7 @@ function App() {
       : null}
 
       {view === 'connect4' ?
-        <Connect4 connectView={connectView} playerTurn={playerTurn} columnClick={columnClick} columns={columns}/>
+        <Connect4 connectView={connectView} playerTurn={playerTurn} columnClick={columnClick} columns={columns} clear={clear}/>
       : null}
 
 

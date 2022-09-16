@@ -62,6 +62,7 @@ import {useState} from 'react'
           <div style={{backgroundColor: props.columns[5][0] === 'red' ? 'red' : props.columns[5][0] === 'blue' ? 'blue' : ''}} className="Connect4cell"></div>
           <div style={{backgroundColor: props.columns[6][0] === 'red' ? 'red' : props.columns[6][0] === 'blue' ? 'blue' : ''}} className="Connect4cell"></div>
         </div>
+        <button onClick={props.clear}>Clear Board</button>
       </>
     )
   }
