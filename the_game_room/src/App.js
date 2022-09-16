@@ -126,6 +126,8 @@ function App() {
         []
       ])
       setGameState(true)
+      setPlayerTurn(1)
+      setColor('red')
     }
   //TRIVIA
   const [numOfQuestions, setNumOfQuestions] = useState(5)
