@@ -156,29 +156,46 @@ function App() {
     <>
 
       {view === 'main' ?
-        <div>
-        <h1>Hello World!</h1>
-      <br/>
-      <p>Welcome to The Game Room! Where you can play all of your favorite (not all) games!</p>
-      <br/>
-      <h2>You can choose from the following games:</h2>
-      <ul>
-        <li onClick={connectView} className='clickable'>Connect 4</li>
-        <li>Tic Tac Toe</li>
-        <li>Checkers</li>
-        <li onClick={memoryView} className='clickable'>Memory</li>
-        <li>Battleship</li>
-        <li onClick={triviaView} className='clickable'>Trivia</li>
-        <li>Dodging/Asteroid/Frogger</li>
-        <li>Hangman</li>
-      </ul>
-      <br/>
-      <h2>To Do (eventually):</h2>
-      <ul>
-        <li>Minesweeper</li>
-        <li>Pong</li>
-      </ul>
-      </div>
+        <div className="main-page">
+          <p className="welcome">Welcome to</p>
+          <h1 className="main-title">The Game Room!</h1>
+          <br/>
+          <p className="welcome">Where you can play all of your favorite (but not all) games!</p>
+          <br/>
+          <h2>You can choose from the following games:</h2>
+          <div className='container'>
+            <div className='card'>
+              <p onClick={connectView} className='card'>Connect 4</p>
+            </div>
+            <div className='card'>
+              <p className='card'>Tic Tac Toe</p>
+            </div>
+            <div className='card'>
+              <p className='card'>Checkers</p>
+            </div>
+            <div className='card'>
+              <p onClick={memoryView} className='card'>Memory</p>
+            </div>
+            <div className='card'>
+              <p className='card'>Battleship</p>
+            </div>
+            <div className='card'>
+              <p onClick={triviaView} className='card'>Trivia</p>
+            </div>
+            <div className='card'>
+              <p className='card'>Dodging/Asteroid/Frogger</p>
+            </div>
+            <div className='card'>
+              <p className='card'>Hangman</p>
+            </div>
+          </div>
+          <br/>
+          <h2>To Do (eventually):</h2>
+          <ul>
+            <li>Minesweeper</li>
+            <li>Pong</li>
+          </ul>
+        </div>
       : null}
 
       {view === 'memory' ?
@@ -199,3 +216,15 @@ function App() {
 }
 
 export default App;
+
+
+// <ul>
+//   <li onClick={connectView} className='card'>Connect 4</li>
+//   <li className='card'>Tic Tac Toe</li>
+//   <li className='card'>Checkers</li>
+//   <li onClick={memoryView} className='card'>Memory</li>
+//   <li className='card'>Battleship</li>
+//   <li onClick={triviaView} className='card'>Trivia</li>
+//   <li className='card'>Dodging/Asteroid/Frogger</li>
+//   <li className='card'>Hangman</li>
+// </ul>

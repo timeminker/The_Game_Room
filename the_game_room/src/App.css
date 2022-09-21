@@ -1,10 +1,36 @@
 /* MAIN PAGE STYLING */
+@import url('https://fonts.googleapis.com/css2?family=Nabla&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
 body {
   text-align: center;
+  background-color: #465362;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.main-title {
+  font-family: 'Nabla', cursive;
+  font-size: 150px;
+  margin-top: -30px;
+  margin-bottom: 0;
 }
 
 ul {
   list-style-type: none;
+}
+
+.welcome {
+  font-size: 40px;
+}
+
+.container {
+  display: flex;
+  margin: 200px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 400px;
 }
 
 .clickable {
