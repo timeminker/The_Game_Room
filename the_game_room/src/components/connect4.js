@@ -10,13 +10,27 @@ import {useState} from 'react'
         <h1>{props.playerTurn % 2 != 0 ? 'Player 1' : 'Player 2'} </h1>
         <h1>Turn:{props.playerTurn}</h1>
         <div className="Connect4numbers">
-          <div onClick={()=>{props.columnClick(0)}} className = "Connect4column">1</div>
-          <div onClick={()=>{props.columnClick(1)}}className = "Connect4column">2</div>
-          <div onClick={()=>{props.columnClick(2)}}className = "Connect4column">3</div>
-          <div onClick={()=>{props.columnClick(3)}}className = "Connect4column">4</div>
-          <div onClick={()=>{props.columnClick(4)}}className = "Connect4column">5</div>
-          <div onClick={()=>{props.columnClick(5)}}className = "Connect4column">6</div>
-          <div onClick={()=>{props.columnClick(6)}}className = "Connect4column">7</div>
+          <div className="Connect4Button">
+            <button onClick={()=>{props.columnClick(0)}} className = "C">1</button>
+          </div>
+          <div className="Connect4Button">
+            <button onClick={()=>{props.columnClick(1)}}className = "C">2</button>
+          </div>
+          <div className="Connect4Button">
+            <button onClick={()=>{props.columnClick(2)}}className = "C">3</button>
+          </div>
+          <div className="Connect4Button">
+            <button onClick={()=>{props.columnClick(3)}}className = "C">4</button>
+          </div>
+          <div className="Connect4Button">
+            <button onClick={()=>{props.columnClick(4)}}className = "C">5</button>
+          </div>
+          <div className="Connect4Button">
+            <button onClick={()=>{props.columnClick(5)}}className = "C">6</button>
+          </div>
+          <div className="Connect4Button">
+            <button onClick={()=>{props.columnClick(6)}}className = "C">7</button>
+          </div>
         </div>
         <div className="Connect4">
           <div style={{backgroundColor: props.columns[0][5] === 'red' ? 'red' : props.columns[0][5] === 'blue' ? 'blue' : ''}} className="Connect4cell"></div>

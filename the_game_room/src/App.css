@@ -53,6 +53,22 @@ ul {
 
 
 /* CONNECT 4 STYLING */
+.Connect4numbers{
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  width:600px;
+}
+
+.Connect4Button{
+  width: 13.4%;
+}
+
+.Connect4Button button{
+  cursor: pointer;
+  font-weight: bold;
+}
+
 .Connect4{
   margin: 0 auto;
   display: flex;
@@ -61,23 +77,6 @@ ul {
   width:600px;
   height: 500px;
   border:3px solid red;
-}
-
-.Connect4numbers{
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width:700px;
-}
-
-.Connect4column{
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  width: 13.4%;
-  font-weight: bold;
-  border: 2px solid white;
 }
 
 .Connect4cell{
