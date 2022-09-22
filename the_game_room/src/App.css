@@ -30,7 +30,28 @@ ul {
   margin: 200px;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  gap: 400px;
+  gap: 200px;
+  background-color: #465362;
+}
+
+img {
+  float: left;
+  width:  400px;
+  height: auto;
+  object-fit: cover;
+}
+
+#rotate {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 .clickable {
