@@ -40,6 +40,7 @@ function App() {
   const [playerTurn, setPlayerTurn] = useState(1)
   const [color, setColor] = useState('red')
   const [gameState, setGameState] = useState(true)
+  const [highlightCell, setHighlightCell] = useState("")
   const [columns, setColumns] = useState([
     [],
     [],
@@ -62,6 +63,15 @@ function App() {
         columns[number].push(color)
       } checkWin()
     }
+  }
+
+  const columnHover = (number) =>{
+    let cell = 0
+    for(let j = 0; j<5; j++){
+      if(columns[number][j] == 'red' || columns[number][j] == 'blue' ){
+        cell++
+      }
+    } setHighlightCell(number + "" + cell)
   }
 
   const checkWin = () => {
@@ -211,7 +221,7 @@ function App() {
       : null}
 
       {view === 'connect4' ?
-        <Connect4 connectView={connectView} playerTurn={playerTurn} columnClick={columnClick} columns={columns} clear={clear}/>
+        <Connect4 connectView={connectView} playerTurn={playerTurn} columnClick={columnClick} columns={columns} clear={clear} columnHover={columnHover} highlightCell={highlightCell}/>
       : null}
 
 
