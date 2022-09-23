@@ -58,20 +58,31 @@ function App() {
           if(playerTurn % 2 == 0){
             setColor('red')
           } else{
-            setColor('blue')
+            setColor('yellow')
           }
         columns[number].push(color)
-      } checkWin()
+      } columnHover(number)
+        checkWin()
     }
   }
 
   const columnHover = (number) =>{
-    let cell = 0
-    for(let j = 0; j<5; j++){
-      if(columns[number][j] == 'red' || columns[number][j] == 'blue' ){
-        cell++
-      }
-    } setHighlightCell(number + "" + cell)
+    if(gameState){
+      let cell = 0
+      for(let j = 0; j<6; j++){
+        if(columns[number][j] == 'yellow' || columns[number][j] == 'red' ){
+          cell++
+        }
+      } if(cell <= 5){
+          setHighlightCell(number + "" + cell)
+        } else{
+          setHighlightCell("")
+        }
+    }
+  }
+
+  const clearHighlight = () =>{
+    setHighlightCell("")
   }
 
   const checkWin = () => {
@@ -87,6 +98,7 @@ function App() {
         if(columns[i][j] == color && columns[i][j+1] == color && columns[i][j+2] == color && columns[i][j+3] == color){
           console.log(color + ' wins!')
           setGameState(false)
+          setHighlightCell("")
         }
       }
     }
@@ -98,6 +110,7 @@ function App() {
         if(columns[i][j] == color && columns[i+1][j] == color && columns[i+2][j] == color && columns[i+3][j] == color ){
           console.log(color + ' wins!')
           setGameState(false)
+          setHighlightCell("")
         }
       }
     }
@@ -109,6 +122,7 @@ function App() {
         if(columns[i][j] == color && columns[i+1][j+1] == color && columns[i+2][j+2] == color && columns[i+3][j+3] == color){
           console.log(color + ' wins!')
           setGameState(false)
+          setHighlightCell("")
         }
       }
     }
@@ -120,6 +134,7 @@ function App() {
           if(columns[i][j] == color && columns[i-1][j+1] == color && columns[i-2][j+2] == color && columns[i-3][j+3] == color){
             console.log(color + ' wins!')
             setGameState(false)
+            setHighlightCell("")
           }
         }
       }
@@ -221,7 +236,7 @@ function App() {
       : null}
 
       {view === 'connect4' ?
-        <Connect4 connectView={connectView} playerTurn={playerTurn} columnClick={columnClick} columns={columns} clear={clear} columnHover={columnHover} highlightCell={highlightCell}/>
+        <Connect4 connectView={connectView} playerTurn={playerTurn} columnClick={columnClick} columns={columns} clear={clear} columnHover={columnHover} highlightCell={highlightCell} clearHighlight={clearHighlight}/>
       : null}
 
 
