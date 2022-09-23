@@ -7,17 +7,29 @@ const Memory = (props) => {
 
     const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink']
     const shapes = ['circle', 'square', 'triangle', 'rectangle', 'horizontal-equals', 'vertical-equals']
-    const combos = []
+    let combosTemp = []
+    let combos = []
 
     const randomize = () => {
-        for (let i = 1; i <= 15; i++) {
+        for (let i = 1; i <= 4; i++) {
             const randomColorIndex = Math.floor(Math.random() * colors.length)
             const randomShapeIndex = Math.floor(Math.random() * shapes.length)
-            if (combos[colors[randomColorIndex]] === shapes[randomShapeIndex]) {
+            const comboAlreadyExists = combosTemp.find(element => element[0] === colors[randomColorIndex] && element[1] === shapes[randomShapeIndex])
+            if (comboAlreadyExists) {
+                console.log('already in there')
                 i--
             } else {
-                combos.push({[colors[randomColorIndex]]: shapes[randomShapeIndex]})
+                console.log('not in there')
+                combosTemp.push([colors[randomColorIndex], shapes[randomShapeIndex]])
             }
+        }
+        for (let i = 0; i < 2; i++) {
+            for (let tempCombo of combosTemp) {
+                combos.push(tempCombo)
+            }
+        }
+        for (let i = 0; i < 5; i++) {
+            combos.sort((a, b) => 0.5 - Math.random())
         }
         setColorShapeCombos(combos)
     }
@@ -32,7 +44,7 @@ const Memory = (props) => {
             <div className='memory-board'>
                 {colorShapeCombos.map((combo) => {
                     return (
-                        <div className='memory-square' id={combo}></div>
+                        <div className='memory-square' id={combo[0] + " " + combo[1]}></div>
                     )
                 })}
             </div>
