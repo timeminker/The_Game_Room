@@ -44,7 +44,7 @@ const Memory = (props) => {
             <div className='memory-board'>
                 {colorShapeCombos.map((combo) => {
                     return (
-                        <div className='memory-square' id={combo[0] + " " + combo[1]}></div>
+                        <div className={'memory-square' + ' ' + combo[0] + " " + combo[1]}></div>
                     )
                 })}
             </div>
