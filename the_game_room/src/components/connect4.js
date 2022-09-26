@@ -33,7 +33,7 @@ import {useState} from 'react'
           </div>
         </div>
         <div className="Connect4">
-          <div className="Connect4cell" style={{backgroundColor: props.highlightCell === '05' ? 'yellow' : ''}}
+          <div className="Connect4cell" style={{backgroundColor: props.highlightCell === '05' ? 'lightgreen' : ''}}
           >
             <div style={{backgroundColor: props.columns[0][5] === 'red' ? 'red' : props.columns[0][5] === 'yellow' ? 'yellow' : ''}} ></div>
           </div>
