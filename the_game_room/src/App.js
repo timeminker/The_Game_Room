@@ -17,6 +17,7 @@ function App() {
       setView('connect4')
     } else {
       setView('main')
+      clear()
     }
   }
 
