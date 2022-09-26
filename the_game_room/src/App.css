@@ -138,13 +138,14 @@ img {
   align-items: center;
   width: 13.4%;
   height:15%;
+  border-radius: 50%;
 }
 
 .Connect4cell div{
   border-radius: 50%;
-  border: 2px solid black;
-  height: 95%;
-  width: 100%;
+  border: 1px solid black;
+  height: 90%;
+  width: 90%;
   background-color: white;
 }
 
