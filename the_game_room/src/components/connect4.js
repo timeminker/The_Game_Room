@@ -33,7 +33,8 @@ import {useState} from 'react'
           </div>
         </div>
         <div className="Connect4">
-          <div className="Connect4cell" style={{backgroundColor: props.highlightCell === '05' ? 'yellow' : ''}} >
+          <div className="Connect4cell" style={{backgroundColor: props.highlightCell === '05' ? 'yellow' : ''}}
+          >
             <div style={{backgroundColor: props.columns[0][5] === 'red' ? 'red' : props.columns[0][5] === 'yellow' ? 'yellow' : ''}} ></div>
           </div>
           <div className="Connect4cell" style={{backgroundColor: props.highlightCell === '15' ? 'yellow' : ''}}>
@@ -103,7 +104,7 @@ import {useState} from 'react'
             <div style={{backgroundColor: props.columns[1][2] === 'red' ? 'red' : props.columns[1][2] === 'yellow' ? 'yellow' : ''}} ></div>
           </div>
           <div className="Connect4cell" style={{backgroundColor: props.highlightCell === '22' ? 'yellow' : ''}}>
-            <div style={{backgroundColor: props.columns[2][2] === 'red' ? 'red' : props.columns[2][2] === 'blue' ? 'blue' : ''}} ></div>
+            <div style={{backgroundColor: props.columns[2][2] === 'red' ? 'red' : props.columns[2][2] === 'yellow' ? 'yellow' : ''}} ></div>
           </div>
           <div className="Connect4cell" style={{backgroundColor: props.highlightCell === '32' ? 'yellow' : ''}}>
             <div style={{backgroundColor: props.columns[3][2] === 'red' ? 'red' : props.columns[3][2] === 'yellow' ? 'yellow' : ''}} ></div>
@@ -161,6 +162,7 @@ import {useState} from 'react'
           </div>
         </div>
         <button onClick={props.clear}>Clear Board</button>
+        <button onClick={props.connectView}>Back to main page</button>
       </>
     )
   }
