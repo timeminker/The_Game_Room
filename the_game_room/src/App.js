@@ -18,6 +18,7 @@ function App() {
     } else {
       setView('main')
       clear()
+      setWinStreak([0,0])
     }
   }
 
@@ -71,6 +72,15 @@ function App() {
   const clearHighlight = () =>{
     setHighlightCell("")
   }
+
+  const checkWinStreak = () =>{
+    if(playerTurn % 2 != 0){
+      setWinStreak([winStreak[0]+1 , 0])
+    } else {
+      setWinStreak([ 0 , winStreak[1]+1])
+    }
+  }
+
   const columnClick = (number) => {
     if(gameState){
       if(columns[number].length < 6){
@@ -81,8 +91,9 @@ function App() {
             setColor('yellow')
           }
         columns[number].push(color)
-      } columnHover(number)
-        checkWin()
+      }
+    columnHover(number)
+    checkWin()
     }
   }
 
@@ -100,6 +111,8 @@ function App() {
           console.log(color + ' wins!')
           setGameState(false)
           setHighlightCell("")
+          setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
+          checkWinStreak()
         }
       }
     }
@@ -112,6 +125,8 @@ function App() {
           console.log(color + ' wins!')
           setGameState(false)
           setHighlightCell("")
+          setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
+          checkWinStreak()
         }
       }
     }
@@ -124,18 +139,22 @@ function App() {
           console.log(color + ' wins!')
           setGameState(false)
           setHighlightCell("")
+          setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
+          checkWinStreak()
         }
       }
     }
   }
 
-    const rightDiagnol = () =>{
-      for(let i = columns.length-1;i >= 3;i--){
-        for(let j = 0; j<=2; j++){
-          if(columns[i][j] == color && columns[i-1][j+1] == color && columns[i-2][j+2] == color && columns[i-3][j+3] == color){
-            console.log(color + ' wins!')
-            setGameState(false)
-            setHighlightCell("")
+  const rightDiagnol = () =>{
+    for(let i = columns.length-1;i >= 3;i--){
+      for(let j = 0; j<=2; j++){
+        if(columns[i][j] == color && columns[i-1][j+1] == color && columns[i-2][j+2] == color && columns[i-3][j+3] == color){
+          console.log(color + ' wins!')
+          setGameState(false)
+          setHighlightCell("")
+          setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
+          checkWinStreak()
           }
         }
       }
@@ -237,7 +256,7 @@ function App() {
       : null}
 
       {view === 'connect4' ?
-        <Connect4 connectView={connectView} playerTurn={playerTurn} columnClick={columnClick} columns={columns} clear={clear} columnHover={columnHover} highlightCell={highlightCell} clearHighlight={clearHighlight}/>
+        <Connect4 connectView={connectView} playerTurn={playerTurn} columnClick={columnClick} columns={columns} clear={clear} columnHover={columnHover} highlightCell={highlightCell} clearHighlight={clearHighlight} winStreak={winStreak}/>
       : null}
 
 

@@ -10,14 +10,14 @@ import {useState} from 'react'
         <div className="player">
           <div>
             <h1 style={{color: props.playerTurn % 2 != 0? 'lightgreen' : ""}}>Player 1</h1>
-            <h2>Win Streak:</h2>
+            <h2>Win Streak : {props.winStreak[0]}</h2>
           </div>
           <div>
             <h1 style={{color: props.playerTurn % 2 == 0? 'lightgreen' : ""}}>Player 2</h1>
-            <h2>Win Streak:</h2>
+            <h2>Win Streak : {props.winStreak[1]}</h2>
           </div>
         </div>
-        <h1>Turn:{props.playerTurn}</h1>
+        <h1>Turn : {props.playerTurn}</h1>
         <div className="Connect4numbers">
           <div className="Connect4Button">
             <button onMouseOut={props.clearHighlight} onMouseOver={()=>{props.columnHover(0)}} onClick={()=>{props.columnClick(0)}} className = "C">1</button>
