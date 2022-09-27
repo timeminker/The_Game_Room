@@ -42,6 +42,7 @@ function App() {
   const [color, setColor] = useState('red')
   const [gameState, setGameState] = useState(true)
   const [highlightCell, setHighlightCell] = useState("")
+  const [winStreak, setWinStreak] = useState([0 , 0])
   const [columns, setColumns] = useState([
     [],
     [],
@@ -51,21 +52,6 @@ function App() {
     [],
     []
   ])
-
-  const columnClick = (number) => {
-    if(gameState){
-      if(columns[number].length < 6){
-        setPlayerTurn(playerTurn+1)
-          if(playerTurn % 2 == 0){
-            setColor('red')
-          } else{
-            setColor('yellow')
-          }
-        columns[number].push(color)
-      } columnHover(number)
-        checkWin()
-    }
-  }
 
   const columnHover = (number) =>{
     if(gameState){
@@ -84,6 +70,20 @@ function App() {
 
   const clearHighlight = () =>{
     setHighlightCell("")
+  }
+  const columnClick = (number) => {
+    if(gameState){
+      if(columns[number].length < 6){
+        setPlayerTurn(playerTurn+1)
+          if(playerTurn % 2 == 0){
+            setColor('red')
+          } else{
+            setColor('yellow')
+          }
+        columns[number].push(color)
+      } columnHover(number)
+        checkWin()
+    }
   }
 
   const checkWin = () => {

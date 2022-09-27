@@ -7,7 +7,16 @@ import {useState} from 'react'
 
     return (
       <>
-        <h1>{props.playerTurn % 2 != 0 ? 'Player 1' : 'Player 2'} </h1>
+        <div className="player">
+          <div>
+            <h1 style={{color: props.playerTurn % 2 != 0? 'lightgreen' : ""}}>Player 1</h1>
+            <h2>Win Streak:</h2>
+          </div>
+          <div>
+            <h1 style={{color: props.playerTurn % 2 == 0? 'lightgreen' : ""}}>Player 2</h1>
+            <h2>Win Streak:</h2>
+          </div>
+        </div>
         <h1>Turn:{props.playerTurn}</h1>
         <div className="Connect4numbers">
           <div className="Connect4Button">
@@ -161,8 +170,10 @@ import {useState} from 'react'
             <div style={{backgroundColor: props.columns[6][0] === 'red' ? 'red' : props.columns[6][0] === 'yellow' ? 'yellow' : ''}} ></div>
           </div>
         </div>
-        <button onClick={props.clear}>Clear Board</button>
-        <button onClick={props.connectView}>Back to main page</button>
+        <div className="Connect4Button buttonCenter">
+          <button  onClick={props.clear}>Clear Board</button>
+          <button  onClick={props.connectView}>Back to main page</button>
+        </div>
       </>
     )
   }
