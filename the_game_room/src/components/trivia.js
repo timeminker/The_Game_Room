@@ -6,26 +6,16 @@ const Trivia = (props) => {
   let [view, setView] = useState('wantToPlay')
   let [questionNumber, setQuestionNumber] = useState(0)
   let [score, setScore] = useState(0)
-  const [trivia, setTrivia] = useState([])
-
-  const [numOfQuestions, setNumOfQuestions] = useState(5)
-  const [difficulty, setDifficulty] = useState('easy')
-
-  const getTrivia = () => {
-    axios.get(`https://the-trivia-api.com/api/questions?limit=${numOfQuestions}&difficulty=${difficulty}`).then((response) => {
-      setTrivia(response.data)
-    })
-  }
 
   const submitNumber = () => {
-    setNumOfQuestions()
+    props.setNumOfQuestions()
   }
 
   const submitDifficulty = () => {
-    setDifficulty()
+    props.setDifficulty()
   }
 
-  let answers = [trivia[questionNumber].incorrectAnswers[0], trivia[questionNumber].incorrectAnswers[1], trivia[questionNumber].incorrectAnswers[2], trivia[questionNumber].correctAnswer]
+  let answers = [props.trivia[questionNumber].incorrectAnswers[0], props.trivia[questionNumber].incorrectAnswers[1], props.trivia[questionNumber].incorrectAnswers[2], props.trivia[questionNumber].correctAnswer]
 
   const shuffleArray = array => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -40,8 +30,8 @@ const Trivia = (props) => {
 
   const checkAnswer = (answer, event) => {
     event.preventDefault()
-    if (questionNumber <= numOfQuestions-2) {
-      if (answer == trivia[questionNumber].correctAnswer) {
+    if (questionNumber <= props.numOfQuestions-2) {
+      if (answer == props.trivia[questionNumber].correctAnswer) {
         console.log(answer)
         // setQuestionNumber(questionNumber+1)
         setScore(score+10)
@@ -59,7 +49,7 @@ const Trivia = (props) => {
   }
 
   const playTrivia = () => {
-    getTrivia()
+    props.getTrivia()
     setView('readyToPlay')
   }
 
@@ -74,10 +64,6 @@ const Trivia = (props) => {
     setView('readyToPlay')
   }
 
-  useEffect(() => {
-    getTrivia()
-  }, [])
-
   return (
     <>
       {view === 'wantToPlay' ?
@@ -85,8 +71,8 @@ const Trivia = (props) => {
         <br/>
           <form>
             <label>Choose number of questions:</label>
-            <select value={numOfQuestions} onChange={(e) => {
-              setNumOfQuestions(e.target.value)
+            <select value={props.numOfQuestions} onChange={(e) => {
+              props.setNumOfQuestions(e.target.value)
             }}>
               <option value="6">5</option>
               <option value="11">10</option>
@@ -96,8 +82,8 @@ const Trivia = (props) => {
           </form>
           <form>
             <label>Choose difficulty:</label>
-            <select value={difficulty} onChange={(e) => {
-              setDifficulty(e.target.value)
+            <select value={props.difficulty} onChange={(e) => {
+              props.setDifficulty(e.target.value)
             }}>
               <option value="easy">EASY</option>
               <option value="medium">MEDIUM</option>
@@ -117,8 +103,8 @@ const Trivia = (props) => {
         <br/>
         <h1>Your Score: {score}</h1>
         <br/>
-        <p>Category: {trivia[questionNumber].category}</p>
-        <h2>Question: {trivia[questionNumber].question}</h2>
+        <p>Category: {props.trivia[questionNumber].category}</p>
+        <h2>Question: {props.trivia[questionNumber].question}</h2>
         <br/>
         <p>{answers}</p>
         {answers.map((answer) => {
@@ -152,7 +138,7 @@ const Trivia = (props) => {
     <div>
       <h1>Correct!</h1>
       <br/>
-      <h2>'{trivia[questionNumber].correctAnswer}' was the correct answer!</h2>
+      <h2>'{props.trivia[questionNumber].correctAnswer}' was the correct answer!</h2>
       <br/>
       <h2>Your score is now {score} points.</h2>
       <br/>
@@ -164,7 +150,7 @@ const Trivia = (props) => {
     <div>
       <h1>Incorrect!</h1>
       <br/>
-      <h2>Sorry, the correct answer was '{trivia[questionNumber].correctAnswer}'</h2>
+      <h2>Sorry, the correct answer was '{props.trivia[questionNumber].correctAnswer}'</h2>
       <br/>
       <h2>Your score is {score} points.</h2>
       <br/>

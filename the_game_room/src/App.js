@@ -8,8 +8,6 @@ import {useState, useEffect} from 'react'
 
 function App() {
   const [view, setView] = useState('main')
-  // const [trivia, setTrivia] = useState([])
-
 
 // VIEWS
   const connectView = () => {
@@ -38,26 +36,19 @@ function App() {
 
 
   //TRIVIA
-  // const [numOfQuestions, setNumOfQuestions] = useState(5)
-  // const [difficulty, setDifficulty] = useState('easy')
-  //
-  // const getTrivia = () => {
-  //   axios.get(`https://the-trivia-api.com/api/questions?limit=${numOfQuestions}&difficulty=${difficulty}`).then((response) => {
-  //     setTrivia(response.data)
-  //   })
-  // }
-  //
-  // const submitNumber = () => {
-  //   setNumOfQuestions()
-  // }
-  //
-  // const submitDifficulty = () => {
-  //   setDifficulty()
-  // }
+  const [numOfQuestions, setNumOfQuestions] = useState(5)
+  const [difficulty, setDifficulty] = useState('easy')
+  const [trivia, setTrivia] = useState([])
+
+  const getTrivia = () => {
+    axios.get(`https://the-trivia-api.com/api/questions?limit=${numOfQuestions}&difficulty=${difficulty}`).then((response) => {
+      setTrivia(response.data)
+    })
+  }
 
   // USEEFFECT
   useEffect(() => {
-    // getTrivia()
+    getTrivia()
   }, [])
 
   return (
@@ -122,25 +113,11 @@ function App() {
         <Connect4 connectView={connectView}/>
       : null}
 
-
-
       {view === 'trivia' ?
-        <Trivia triviaView={triviaView}/>
+        <Trivia triviaView={triviaView} trivia={trivia} numOfQuestions={numOfQuestions} setNumOfQuestions={setNumOfQuestions} difficulty={difficulty} setDifficulty={setDifficulty} getTrivia={getTrivia}/>
       : null}
     </>
   );
 }
 
 export default App;
-
-
-// <ul>
-//   <li onClick={connectView} className='card'>Connect 4</li>
-//   <li className='card'>Tic Tac Toe</li>
-//   <li className='card'>Checkers</li>
-//   <li onClick={memoryView} className='card'>Memory</li>
-//   <li className='card'>Battleship</li>
-//   <li onClick={triviaView} className='card'>Trivia</li>
-//   <li className='card'>Dodging/Asteroid/Frogger</li>
-//   <li className='card'>Hangman</li>
-// </ul>
