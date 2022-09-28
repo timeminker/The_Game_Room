@@ -209,37 +209,37 @@ function App() {
           <br/>
           <h2>You can choose from the following games:</h2>
           <div className='container'>
-            <div className='card'>
+            <div className='card clickable' onClick={connectView}>
               <img src="Logo.png"/>
-              <p onClick={connectView} className='card'>Connect 4</p>
+              <p>Connect 4</p>
             </div>
             <div className='card'>
               <img src="pngwing.com.png" id="rotate"/>
-              <p className='card'>Tic Tac Toe</p>
+              <p>Tic Tac Toe</p>
             </div>
             <div className='card'>
               <img src="pngwing.com.png" id="rotate"/>
-              <p className='card'>Checkers</p>
+              <p>Checkers</p>
             </div>
-            <div className='card'>
+            <div className='card clickable' onClick={memoryView}>
               <img src="memory.png"/>
-              <p onClick={memoryView} className='card'>Memory</p>
+              <p>Memory</p>
             </div>
             <div className='card'>
               <img src="pngwing.com.png" id="rotate"/>
-              <p className='card'>Battleship</p>
+              <p>Battleship</p>
             </div>
-            <div className='card'>
+            <div className='card clickable' onClick={triviaView}>
               <img src="trivia.png"/>
-              <p onClick={triviaView} className='card'>Trivia</p>
+              <p>Trivia</p>
             </div>
             <div className='card'>
               <img id="rotate" src="pngwing.com.png"/>
-              <p className='card'>Dodging/Asteroid/Frogger</p>
+              <p>Dodging/Asteroid/Frogger</p>
             </div>
             <div className='card'>
               <img id="rotate" src="pngwing.com.png"/>
-              <p className='card'>Hangman</p>
+              <p>Hangman</p>
             </div>
           </div>
           <br/>
