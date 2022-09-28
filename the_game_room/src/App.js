@@ -17,8 +17,6 @@ function App() {
       setView('connect4')
     } else {
       setView('main')
-      clear()
-      setWinStreak([0,0])
     }
   }
 
@@ -38,142 +36,7 @@ function App() {
     }
   }
 
-  // CONNECT4
-  const [playerTurn, setPlayerTurn] = useState(1)
-  const [color, setColor] = useState('red')
-  const [gameState, setGameState] = useState(true)
-  const [highlightCell, setHighlightCell] = useState("")
-  const [winStreak, setWinStreak] = useState([0 , 0])
-  const [columns, setColumns] = useState([
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    []
-  ])
 
-  const columnHover = (number) =>{
-    if(gameState){
-      let cell = 0
-      for(let j = 0; j<6; j++){
-        if(columns[number][j] == 'yellow' || columns[number][j] == 'red' ){
-          cell++
-        }
-      } if(cell <= 5){
-          setHighlightCell(number + "" + cell)
-        } else{
-          setHighlightCell("")
-        }
-    }
-  }
-
-  const clearHighlight = () =>{
-    setHighlightCell("")
-  }
-
-  const checkWinStreak = () =>{
-    if(playerTurn % 2 != 0){
-      setWinStreak([winStreak[0]+1 , 0])
-    } else {
-      setWinStreak([ 0 , winStreak[1]+1])
-    }
-  }
-
-  const columnClick = (number) => {
-    if(gameState){
-      if(columns[number].length < 6){
-        setPlayerTurn(playerTurn+1)
-          if(playerTurn % 2 == 0){
-            setColor('red')
-          } else{
-            setColor('yellow')
-          }
-        columns[number].push(color)
-      }
-    columnHover(number)
-    checkWin()
-    }
-  }
-
-  const checkWin = () => {
-    checkVertical()
-    checkHorizontal()
-    leftDiagnol()
-    rightDiagnol()
-  }
-
-  const checkVertical = () =>{
-    for(let i = 0; i<columns.length; i++){
-      for(let j = 0; j <= 2; j++){
-        if(columns[i][j] == color && columns[i][j+1] == color && columns[i][j+2] == color && columns[i][j+3] == color){
-          console.log(color + ' wins!')
-          setGameState(false)
-          setHighlightCell("")
-          setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
-          checkWinStreak()
-        }
-      }
-    }
-  }
-
-  const checkHorizontal = () =>{
-    for(let i = 0; i<=3; i++){
-      for(let j = 0; j<columns.length;j++){
-        if(columns[i][j] == color && columns[i+1][j] == color && columns[i+2][j] == color && columns[i+3][j] == color ){
-          console.log(color + ' wins!')
-          setGameState(false)
-          setHighlightCell("")
-          setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
-          checkWinStreak()
-        }
-      }
-    }
-  }
-
-  const leftDiagnol = () =>{
-    for(let i = 0; i <= 3; i++){
-      for(let j = 0; j <= 2;j++){
-        if(columns[i][j] == color && columns[i+1][j+1] == color && columns[i+2][j+2] == color && columns[i+3][j+3] == color){
-          console.log(color + ' wins!')
-          setGameState(false)
-          setHighlightCell("")
-          setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
-          checkWinStreak()
-        }
-      }
-    }
-  }
-
-  const rightDiagnol = () =>{
-    for(let i = columns.length-1;i >= 3;i--){
-      for(let j = 0; j<=2; j++){
-        if(columns[i][j] == color && columns[i-1][j+1] == color && columns[i-2][j+2] == color && columns[i-3][j+3] == color){
-          console.log(color + ' wins!')
-          setGameState(false)
-          setHighlightCell("")
-          setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
-          checkWinStreak()
-          }
-        }
-      }
-    }
-
-    const clear = () =>{
-      setColumns([
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-      ])
-      setGameState(true)
-      setPlayerTurn(1)
-      setColor('red')
-    }
   //TRIVIA
   const [numOfQuestions, setNumOfQuestions] = useState(5)
   const [difficulty, setDifficulty] = useState('easy')
@@ -256,7 +119,7 @@ function App() {
       : null}
 
       {view === 'connect4' ?
-        <Connect4 connectView={connectView} playerTurn={playerTurn} columnClick={columnClick} columns={columns} clear={clear} columnHover={columnHover} highlightCell={highlightCell} clearHighlight={clearHighlight} winStreak={winStreak}/>
+        <Connect4 connectView={connectView}/>
       : null}
 
 
