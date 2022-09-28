@@ -106,7 +106,6 @@ const Trivia = (props) => {
         <p>Category: {props.trivia[questionNumber].category}</p>
         <h2>Question: {props.trivia[questionNumber].question}</h2>
         <br/>
-        <p>{answers}</p>
         {answers.map((answer) => {
           return (
             <>
@@ -117,7 +116,8 @@ const Trivia = (props) => {
           )
         })}
         <br/>
-        <button onClick={props.triviaView}>Go Back</button>
+        <br/>
+        <button className="dropbtn" onClick={props.triviaView}>Go Back</button>
       </div>
     : null}
 
@@ -126,8 +126,9 @@ const Trivia = (props) => {
       <h1>GAME OVER</h1>
       <br/>
       <br/>
-      <h4>Your score was {score} pounts. Great job!</h4>
+      <h4>Your score was {score} points.</h4>
       <br/>
+      <h2>{score === (props.numOfQuestions * 10) ? 'Perfect Score!' : score === 0 ? 'You\'re a big dummy' : score / (props.numOfQuestions * 10) > .5 ? 'Great Job! Almost all right!' : score / (props.numOfQuestions * 10) < .5 ? 'You didn\'t do well' : null}</h2>
       <br/>
       <button className="dropbtn" onClick={playAgain}>Play Again</button>
       <button className="dropbtn" onClick={props.triviaView}>Return to Main Menu</button>
