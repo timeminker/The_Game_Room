@@ -24,12 +24,14 @@ const Trivia = (props) => {
     if (questionNumber <= props.numOfQuestions-2) {
       if (answer == props.trivia[questionNumber].correctAnswer) {
         console.log(answer)
-        setQuestionNumber(questionNumber+1)
+        // setQuestionNumber(questionNumber+1)
         setScore(score+10)
+        setView('correct')
         console.log(questionNumber);
       } else {
         console.log('WRONG');
-        setQuestionNumber(questionNumber+1)
+        // setQuestionNumber(questionNumber+1)
+        setView('wrong')
         console.log(questionNumber);
       }
     } else {
@@ -46,6 +48,11 @@ const Trivia = (props) => {
     setView('wantToPlay')
     setScore(0)
     setQuestionNumber(0)
+  }
+
+  const nextQuestion = () => {
+    setQuestionNumber(questionNumber+1)
+    setView('readyToPlay')
   }
 
   return (
@@ -94,7 +101,7 @@ const Trivia = (props) => {
         {answers.map((answer) => {
           return (
             <>
-              <button onClick={(event) => {
+              <button className="dropbtn" onClick={(event) => {
                 checkAnswer(answer, event)
               }} key={answer.id}>{answer}</button>
             </>
@@ -117,6 +124,30 @@ const Trivia = (props) => {
       <button className="dropbtn" onClick={props.triviaView}>Return to Main Menu</button>
     </div>
     : null}
+
+    {view === 'correct' ?
+    <div>
+      <h1>Correct!</h1>
+      <br/>
+      <h2>'{props.trivia[questionNumber].correctAnswer}' was the correct answer!</h2>
+      <br/>
+      <h2>Your score is now {score} points.</h2>
+      <br/>
+      <button className="dropbtn" onClick={nextQuestion}>Next Question</button>
+    </div>
+    :null}
+
+    {view === 'wrong' ?
+    <div>
+      <h1>Incorrect!</h1>
+      <br/>
+      <h2>Sorry, the correct answer was '{props.trivia[questionNumber].correctAnswer}'</h2>
+      <br/>
+      <h2>Your score is {score} points.</h2>
+      <br/>
+      <button className="dropbtn" onClick={nextQuestion}>Next Question</button>
+    </div>
+    :null}
     </>
   )
 }
