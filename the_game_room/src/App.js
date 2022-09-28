@@ -8,7 +8,7 @@ import {useState, useEffect} from 'react'
 
 function App() {
   const [view, setView] = useState('main')
-  const [trivia, setTrivia] = useState([])
+  // const [trivia, setTrivia] = useState([])
 
 
 // VIEWS
@@ -38,26 +38,26 @@ function App() {
 
 
   //TRIVIA
-  const [numOfQuestions, setNumOfQuestions] = useState(5)
-  const [difficulty, setDifficulty] = useState('easy')
-
-  const getTrivia = () => {
-    axios.get(`https://the-trivia-api.com/api/questions?limit=${numOfQuestions}&difficulty=${difficulty}`).then((response) => {
-      setTrivia(response.data)
-    })
-  }
-
-  const submitNumber = () => {
-    setNumOfQuestions()
-  }
-
-  const submitDifficulty = () => {
-    setDifficulty()
-  }
+  // const [numOfQuestions, setNumOfQuestions] = useState(5)
+  // const [difficulty, setDifficulty] = useState('easy')
+  //
+  // const getTrivia = () => {
+  //   axios.get(`https://the-trivia-api.com/api/questions?limit=${numOfQuestions}&difficulty=${difficulty}`).then((response) => {
+  //     setTrivia(response.data)
+  //   })
+  // }
+  //
+  // const submitNumber = () => {
+  //   setNumOfQuestions()
+  // }
+  //
+  // const submitDifficulty = () => {
+  //   setDifficulty()
+  // }
 
   // USEEFFECT
   useEffect(() => {
-    getTrivia()
+    // getTrivia()
   }, [])
 
   return (
@@ -125,7 +125,7 @@ function App() {
 
 
       {view === 'trivia' ?
-        <Trivia triviaView={triviaView} trivia={trivia} getTrivia={getTrivia} numOfQuestions={numOfQuestions} difficulty={difficulty} setNumOfQuestions={setNumOfQuestions} setDifficulty={setDifficulty}/>
+        <Trivia triviaView={triviaView}/>
       : null}
     </>
   );
