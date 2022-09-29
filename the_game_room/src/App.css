@@ -34,14 +34,19 @@ ul {
   background-color: #465362;
 }
 
-img {
+.main-icon {
   float: left;
   width:  400px;
   height: auto;
   object-fit: cover;
+  transition: transform .3s
 }
 
-#rotate {
+.main-icon:hover {
+  transform: scale(1.5);
+}
+
+/* #rotate {
   animation: rotation 2s infinite linear;
 }
 
@@ -52,7 +57,7 @@ img {
   to {
     transform: rotate(359deg);
   }
-}
+} */
 
 .clickable {
   cursor: pointer;
