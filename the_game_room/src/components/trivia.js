@@ -1,10 +1,19 @@
 import React from 'react'
-import {useState} from 'react'
+import axios from 'axios'
+import {useState, useEffect} from 'react'
 
 const Trivia = (props) => {
   let [view, setView] = useState('wantToPlay')
   let [questionNumber, setQuestionNumber] = useState(0)
   let [score, setScore] = useState(0)
+
+  const submitNumber = () => {
+    props.setNumOfQuestions()
+  }
+
+  const submitDifficulty = () => {
+    props.setDifficulty()
+  }
 
   let answers = [props.trivia[questionNumber].incorrectAnswers[0], props.trivia[questionNumber].incorrectAnswers[1], props.trivia[questionNumber].incorrectAnswers[2], props.trivia[questionNumber].correctAnswer]
 
@@ -24,12 +33,14 @@ const Trivia = (props) => {
     if (questionNumber <= props.numOfQuestions-2) {
       if (answer == props.trivia[questionNumber].correctAnswer) {
         console.log(answer)
-        setQuestionNumber(questionNumber+1)
+        // setQuestionNumber(questionNumber+1)
         setScore(score+10)
+        setView('correct')
         console.log(questionNumber);
       } else {
         console.log('WRONG');
-        setQuestionNumber(questionNumber+1)
+        // setQuestionNumber(questionNumber+1)
+        setView('wrong')
         console.log(questionNumber);
       }
     } else {
@@ -46,6 +57,11 @@ const Trivia = (props) => {
     setView('wantToPlay')
     setScore(0)
     setQuestionNumber(0)
+  }
+
+  const nextQuestion = () => {
+    setQuestionNumber(questionNumber+1)
+    setView('readyToPlay')
   }
 
   return (
@@ -90,18 +106,18 @@ const Trivia = (props) => {
         <p>Category: {props.trivia[questionNumber].category}</p>
         <h2>Question: {props.trivia[questionNumber].question}</h2>
         <br/>
-        <p>{answers}</p>
         {answers.map((answer) => {
           return (
             <>
-              <button onClick={(event) => {
+              <button className="dropbtn" onClick={(event) => {
                 checkAnswer(answer, event)
               }} key={answer.id}>{answer}</button>
             </>
           )
         })}
         <br/>
-        <button onClick={props.triviaView}>Go Back</button>
+        <br/>
+        <button className="dropbtn" onClick={props.triviaView}>Go Back</button>
       </div>
     : null}
 
@@ -110,13 +126,38 @@ const Trivia = (props) => {
       <h1>GAME OVER</h1>
       <br/>
       <br/>
-      <h4>Your score was {score} pounts. Great job!</h4>
+      <h4>Your score was {score} points.</h4>
       <br/>
+      <h2>{score === (props.numOfQuestions * 10) ? 'Perfect Score!' : score === 0 ? 'You\'re a big dummy' : score / (props.numOfQuestions * 10) > .5 ? 'Great Job! Almost all right!' : score / (props.numOfQuestions * 10) < .5 ? 'You didn\'t do well' : null}</h2>
       <br/>
       <button className="dropbtn" onClick={playAgain}>Play Again</button>
       <button className="dropbtn" onClick={props.triviaView}>Return to Main Menu</button>
     </div>
     : null}
+
+    {view === 'correct' ?
+    <div>
+      <h1>Correct!</h1>
+      <br/>
+      <h2>'{props.trivia[questionNumber].correctAnswer}' was the correct answer!</h2>
+      <br/>
+      <h2>Your score is now {score} points.</h2>
+      <br/>
+      <button className="dropbtn" onClick={nextQuestion}>Next Question</button>
+    </div>
+    :null}
+
+    {view === 'wrong' ?
+    <div>
+      <h1>Incorrect!</h1>
+      <br/>
+      <h2>Sorry, the correct answer was '{props.trivia[questionNumber].correctAnswer}'</h2>
+      <br/>
+      <h2>Your score is {score} points.</h2>
+      <br/>
+      <button className="dropbtn" onClick={nextQuestion}>Next Question</button>
+    </div>
+    :null}
     </>
   )
 }
@@ -166,7 +207,7 @@ export default Trivia
 //   </form>
 //   <h1>Are you ready to play trivia?</h1>
 //   <button className="dropbtn" onClick={playTrivia}>Yes!</button>
-//   <button className="dropbtn" onClick={props.triviaView}>No!</button>
+//   <button className="dropbtn" onClick={triviaView}>No!</button>
 // </div>
 // : null }
 //

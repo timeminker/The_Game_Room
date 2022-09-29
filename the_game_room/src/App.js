@@ -8,8 +8,6 @@ import {useState, useEffect} from 'react'
 
 function App() {
   const [view, setView] = useState('main')
-  const [trivia, setTrivia] = useState([])
-
 
 // VIEWS
   const connectView = () => {
@@ -36,125 +34,16 @@ function App() {
     }
   }
 
-  // CONNECT4
-  const [playerTurn, setPlayerTurn] = useState(1)
-  const [color, setColor] = useState('red')
-  const [gameState, setGameState] = useState(true)
-  const [highlightCell, setHighlightCell] = useState("")
-  const [columns, setColumns] = useState([
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    []
-  ])
 
-  const columnClick = (number) => {
-    if(gameState){
-      if(columns[number].length < 6){
-        setPlayerTurn(playerTurn+1)
-          if(playerTurn % 2 == 0){
-            setColor('red')
-          } else{
-            setColor('blue')
-          }
-        columns[number].push(color)
-      } checkWin()
-    }
-  }
-
-  const columnHover = (number) =>{
-    let cell = 0
-    for(let j = 0; j<5; j++){
-      if(columns[number][j] == 'red' || columns[number][j] == 'blue' ){
-        cell++
-      }
-    } setHighlightCell(number + "" + cell)
-  }
-
-  const checkWin = () => {
-    checkVertical()
-    checkHorizontal()
-    leftDiagnol()
-    rightDiagnol()
-  }
-
-  const checkVertical = () =>{
-    for(let i = 0; i<columns.length; i++){
-      for(let j = 0; j <= 2; j++){
-        if(columns[i][j] == color && columns[i][j+1] == color && columns[i][j+2] == color && columns[i][j+3] == color){
-          console.log(color + ' wins!')
-          setGameState(false)
-        }
-      }
-    }
-  }
-
-  const checkHorizontal = () =>{
-    for(let i = 0; i<=3; i++){
-      for(let j = 0; j<columns.length;j++){
-        if(columns[i][j] == color && columns[i+1][j] == color && columns[i+2][j] == color && columns[i+3][j] == color ){
-          console.log(color + ' wins!')
-          setGameState(false)
-        }
-      }
-    }
-  }
-
-  const leftDiagnol = () =>{
-    for(let i = 0; i <= 3; i++){
-      for(let j = 0; j <= 2;j++){
-        if(columns[i][j] == color && columns[i+1][j+1] == color && columns[i+2][j+2] == color && columns[i+3][j+3] == color){
-          console.log(color + ' wins!')
-          setGameState(false)
-        }
-      }
-    }
-  }
-
-    const rightDiagnol = () =>{
-      for(let i = columns.length-1;i >= 3;i--){
-        for(let j = 0; j<=2; j++){
-          if(columns[i][j] == color && columns[i-1][j+1] == color && columns[i-2][j+2] == color && columns[i-3][j+3] == color){
-            console.log(color + ' wins!')
-            setGameState(false)
-          }
-        }
-      }
-    }
-
-    const clear = () =>{
-      setColumns([
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        []
-      ])
-      setGameState(true)
-      setPlayerTurn(1)
-      setColor('red')
-    }
   //TRIVIA
   const [numOfQuestions, setNumOfQuestions] = useState(5)
   const [difficulty, setDifficulty] = useState('easy')
+  const [trivia, setTrivia] = useState([])
 
   const getTrivia = () => {
     axios.get(`https://the-trivia-api.com/api/questions?limit=${numOfQuestions}&difficulty=${difficulty}`).then((response) => {
       setTrivia(response.data)
     })
-  }
-
-  const submitNumber = () => {
-    setNumOfQuestions()
-  }
-
-  const submitDifficulty = () => {
-    setDifficulty()
   }
 
   // USEEFFECT
@@ -174,37 +63,37 @@ function App() {
           <br/>
           <h2>You can choose from the following games:</h2>
           <div className='container'>
-            <div className='card'>
+            <div className='card clickable' onClick={connectView}>
               <img src="Logo.png"/>
-              <p onClick={connectView} className='card'>Connect 4</p>
+              <p>Connect 4</p>
             </div>
             <div className='card'>
               <img src="pngwing.com.png" id="rotate"/>
-              <p className='card'>Tic Tac Toe</p>
+              <p>Tic Tac Toe</p>
             </div>
             <div className='card'>
               <img src="pngwing.com.png" id="rotate"/>
-              <p className='card'>Checkers</p>
+              <p>Checkers</p>
             </div>
-            <div className='card'>
+            <div className='card clickable' onClick={memoryView}>
               <img src="memory.png"/>
-              <p onClick={memoryView} className='card'>Memory</p>
+              <p>Memory</p>
             </div>
             <div className='card'>
               <img src="pngwing.com.png" id="rotate"/>
-              <p className='card'>Battleship</p>
+              <p>Battleship</p>
             </div>
-            <div className='card'>
+            <div className='card clickable' onClick={triviaView}>
               <img src="trivia.png"/>
-              <p onClick={triviaView} className='card'>Trivia</p>
+              <p>Trivia</p>
             </div>
             <div className='card'>
               <img id="rotate" src="pngwing.com.png"/>
-              <p className='card'>Dodging/Asteroid/Frogger</p>
+              <p>Dodging/Asteroid/Frogger</p>
             </div>
             <div className='card'>
               <img id="rotate" src="pngwing.com.png"/>
-              <p className='card'>Hangman</p>
+              <p>Hangman</p>
             </div>
           </div>
           <br/>
@@ -221,28 +110,14 @@ function App() {
       : null}
 
       {view === 'connect4' ?
-        <Connect4 connectView={connectView} playerTurn={playerTurn} columnClick={columnClick} columns={columns} clear={clear} columnHover={columnHover} highlightCell={highlightCell}/>
+        <Connect4 connectView={connectView}/>
       : null}
 
-
-
       {view === 'trivia' ?
-        <Trivia triviaView={triviaView} trivia={trivia} getTrivia={getTrivia} numOfQuestions={numOfQuestions} difficulty={difficulty} setNumOfQuestions={setNumOfQuestions} setDifficulty={setDifficulty}/>
+        <Trivia triviaView={triviaView} trivia={trivia} numOfQuestions={numOfQuestions} setNumOfQuestions={setNumOfQuestions} difficulty={difficulty} setDifficulty={setDifficulty} getTrivia={getTrivia}/>
       : null}
     </>
   );
 }
 
 export default App;
-
-
-// <ul>
-//   <li onClick={connectView} className='card'>Connect 4</li>
-//   <li className='card'>Tic Tac Toe</li>
-//   <li className='card'>Checkers</li>
-//   <li onClick={memoryView} className='card'>Memory</li>
-//   <li className='card'>Battleship</li>
-//   <li onClick={triviaView} className='card'>Trivia</li>
-//   <li className='card'>Dodging/Asteroid/Frogger</li>
-//   <li className='card'>Hangman</li>
-// </ul>
