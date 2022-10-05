@@ -160,7 +160,7 @@ import {useState} from 'react'
         <div className="player">
           <div>
             <h1 style={{color:playerTurn % 2 != 0? 'lightgreen' : ""}}>Player 1</h1>
-            <h2>in Streak : {winStreak[0]}</h2>
+            <h2>Win Streak : {winStreak[0]}</h2>
           </div>
           <div>
             <h1 style={{color:playerTurn % 2 == 0? 'lightgreen' : ""}}>Player 2</h1>
