@@ -110,6 +110,17 @@ ul {
   background-color: red;
 }
 
+.difficulty{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 857px;
+}
+
+.difficulty div{
+  width:100%;
+}
+
 .player{
   margin:0 auto;
   display: flex;

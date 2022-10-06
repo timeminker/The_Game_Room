@@ -8,8 +8,9 @@ import {useState} from 'react'
   const [gameState, setGameState] = useState(true)
   const [highlightCell, setHighlightCell] = useState("")
   const [winStreak, setWinStreak] = useState([0 , 0])
-  const [winner, setWinner] = useState(true)
+  const [winner, setWinner] = useState(false)
   const [opponent, setOpponent] = useState(false)
+  const [dificulty, setDifficulty] = useState("")
   const [columns, setColumns] = useState([
     [],
     [],
@@ -22,6 +23,11 @@ import {useState} from 'react'
 
   const opponentChoice = (choice) => {
     setOpponent(choice)
+  }
+
+  const level = (choice) => {
+    setOpponent("Computer")
+    setDifficulty(choice)
   }
 
   const columnHover = (number) =>{
@@ -59,7 +65,7 @@ import {useState} from 'react'
         if(playerTurn % 2 == 0){
           setColor('red')
         }else{
-            setColor('yellow')
+          setColor('yellow')
         }
         columns[number].push(color)
       }
@@ -84,7 +90,7 @@ import {useState} from 'react'
           setHighlightCell("")
           setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
           checkWinStreak()
-          setWinner(false)
+          setWinner(true)
         }
       }
     }
@@ -99,7 +105,7 @@ import {useState} from 'react'
           setHighlightCell("")
           setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
           checkWinStreak()
-          setWinner(false)
+          setWinner(true)
         }
       }
     }
@@ -114,7 +120,7 @@ import {useState} from 'react'
           setHighlightCell("")
           setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
           checkWinStreak()
-          setWinner(false)
+          setWinner(true)
         }
       }
     }
@@ -129,7 +135,7 @@ import {useState} from 'react'
           setHighlightCell("")
           setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
           checkWinStreak()
-          setWinner(false)
+          setWinner(true)
           }
         }
       }
@@ -157,7 +163,7 @@ import {useState} from 'react'
     }
 
     const returnToBoard = () =>{
-      setWinner(true)
+      setWinner(false)
     }
 
     return (
@@ -168,7 +174,20 @@ import {useState} from 'react'
               <h1 onClick={()=>{opponentChoice("Player")}}>Player VS Player</h1>
             </div>
             <div>
-              <h1 onClick={()=>{opponentChoice("Computer")}}>Player VS Computer</h1>
+              <h1 onClick={()=>{opponentChoice("Mode")}}>Player VS Computer</h1>
+            </div>
+          </div>
+        : ""}
+        {opponent === "Mode"?
+          <div className="difficulty">
+            <div>
+              <h1 onClick={()=>{level('Random')}}>Random</h1>
+            </div>
+            <div>
+              <h1 onClick={()=>{level('Easy')}}>Easy</h1>
+            </div>
+            <div>
+              <h1 onClick={()=>{level('Hard')}}>Hard</h1>
             </div>
           </div>
         : ""}
@@ -184,7 +203,7 @@ import {useState} from 'react'
               <h2>Win Streak : {winStreak[1]}</h2>
             </div>
           </div>
-          {winner?
+          {!winner?
           <div>
             <h1>Turn : {playerTurn}</h1>
             <div className="Connect4numbers">
@@ -349,7 +368,7 @@ import {useState} from 'react'
         : ""}
 
 
-        {!winner?
+        {winner?
         <div>
           <h1>player {playerTurn % 2 != 0? '1' : '2' } wins!</h1>
           <div className="Connect4Button buttonCenter">
