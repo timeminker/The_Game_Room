@@ -44,7 +44,13 @@ const Trivia = (props) => {
         console.log(questionNumber);
       }
     } else {
-      setView('gameOver')
+      if (answer == props.trivia[questionNumber].correctAnswer) {
+        setScore(score+10)
+        setView('gameOver')
+      } else {
+        setView('gameOver')
+      }
+
     }
   }
 
@@ -67,7 +73,7 @@ const Trivia = (props) => {
   return (
     <>
       {view === 'wantToPlay' ?
-        <div>
+        <div className="settings">
         <br/>
           <form>
             <label>Choose number of questions:</label>
@@ -128,7 +134,7 @@ const Trivia = (props) => {
       <br/>
       <h4>Your score was {score} points.</h4>
       <br/>
-      <h2>{score === (props.numOfQuestions * 10) ? 'Perfect Score!' : score === 0 ? 'You\'re a big dummy' : score / (props.numOfQuestions * 10) > .5 ? 'Great Job! Almost all right!' : score / (props.numOfQuestions * 10) < .5 ? 'You didn\'t do well' : null}</h2>
+      <h2>{score === (props.numOfQuestions * 10) ? `Perfect Score! You answered all ${props.numOfQuestions} questions correctly!` : score === 0 ? `You\'re a big dummy, you got 0/${props.numOfQuestions} correct.` : score / (props.numOfQuestions * 10) > .5 ? `Great Job! Almost all right! ${score/10}/${props.numOfQuestions} correct!` : score / (props.numOfQuestions * 10) < .5 ? `You didn\'t do well, only ${score/10}/${props.numOfQuestions} correct. 🤷` : null}</h2>
       <br/>
       <button className="dropbtn" onClick={playAgain}>Play Again</button>
       <button className="dropbtn" onClick={props.triviaView}>Return to Main Menu</button>
