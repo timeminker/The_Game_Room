@@ -248,6 +248,29 @@ ul {
   background-color: #ddd;
 }
 
+#main-title {
+  font-size: 70px;
+  animation-name: flashing-title;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes flashing-title {
+  0% {color: chartreuse}
+  25% {color: red}
+  50% {color: blue}
+  75% {color: yellow}
+  100% {color: purple}
+}
+
+.set-buttons {
+  font-size: 20px;
+}
+
+select {
+  margin-left: 10px;
+}
+
 .modal, .settings {
   position: fixed;
   top: 50%;
