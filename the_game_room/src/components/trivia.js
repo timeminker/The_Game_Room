@@ -75,8 +75,10 @@ const Trivia = (props) => {
       {view === 'wantToPlay' ?
         <div className="settings">
         <br/>
+        <h1 id="main-title">Are you ready to play trivia?</h1>
+        <h1>Choose your settings:</h1>
           <form>
-            <label>Choose number of questions:</label>
+            <label className="set-buttons">Number of questions:    </label>
             <select value={props.numOfQuestions} onChange={(e) => {
               props.setNumOfQuestions(e.target.value)
             }}>
@@ -87,7 +89,7 @@ const Trivia = (props) => {
 
           </form>
           <form>
-            <label>Choose difficulty:</label>
+            <label className="set-buttons">Difficulty:    </label>
             <select value={props.difficulty} onChange={(e) => {
               props.setDifficulty(e.target.value)
             }}>
@@ -95,11 +97,11 @@ const Trivia = (props) => {
               <option value="medium">MEDIUM</option>
               <option value="hard">HARD</option>
             </select>
-
           </form>
-          <h1>Are you ready to play trivia?</h1>
-          <button className="dropbtn" onClick={playTrivia}>Yes!</button>
-          <button className="dropbtn" onClick={props.triviaView}>No!</button>
+          <br/>
+          <br/>
+          <button className="dropbtn" onClick={playTrivia}>Start Game</button>
+          <button className="dropbtn" onClick={props.triviaView}>Take Me Back</button>
         </div>
       : null}
 
