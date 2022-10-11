@@ -112,17 +112,24 @@ const Trivia = (props) => {
         <h1>Your Score: {score}</h1>
         <br/>
         <p>Category: {props.trivia[questionNumber].category}</p>
-        <h2>Question: {props.trivia[questionNumber].question}</h2>
+        <div className="question-card">
+          <h2>Question:</h2>
+          <h1 id="question">{props.trivia[questionNumber].question}</h1>
+        </div>
         <br/>
+        <div className="answer-container">
         {answers.map((answer) => {
           return (
             <>
-              <button className="dropbtn" onClick={(event) => {
-                checkAnswer(answer, event)
-              }} key={answer.id}>{answer}</button>
+              <div className="answer-card">
+                <button className="dropbtn" onClick={(event) => {
+                  checkAnswer(answer, event)
+                }} key={answer.id}>{answer}</button>
+              </div>
             </>
           )
         })}
+        </div>
         <br/>
         <br/>
         <button className="dropbtn" onClick={props.triviaView}>Go Back</button>
@@ -136,7 +143,7 @@ const Trivia = (props) => {
       <br/>
       <h4>Your score was {score} points.</h4>
       <br/>
-      <h2>{score === (props.numOfQuestions * 10) ? `Perfect Score! You answered all ${props.numOfQuestions} questions correctly!` : score === 0 ? `You\'re a big dummy, you got 0/${props.numOfQuestions} correct.` : score / (props.numOfQuestions * 10) > .5 ? `Great Job! Almost all right! ${score/10}/${props.numOfQuestions} correct!` : score / (props.numOfQuestions * 10) < .5 ? `You didn\'t do well, only ${score/10}/${props.numOfQuestions} correct. 🤷` : null}</h2>
+      <h2>{score === ((props.numOfQuestions-1) * 10) ? `Perfect Score! You answered all ${props.numOfQuestions-1} questions correctly!` : score === 0 ? `You\'re a big dummy, you got 0/${props.numOfQuestions} correct.` : score / ((props.numOfQuestions) * 10) > .5 ? `Great Job! Almost all right! ${score/10}/${props.numOfQuestions} correct!` : score / ((props.numOfQuestions-1) * 10) < .5 ? `You didn\'t do well, only ${score/10}/${props.numOfQuestions-1} correct. 🤷` : null}</h2>
       <br/>
       <button className="dropbtn" onClick={playAgain}>Play Again</button>
       <button className="dropbtn" onClick={props.triviaView}>Return to Main Menu</button>
