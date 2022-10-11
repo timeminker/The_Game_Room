@@ -36,7 +36,7 @@ function App() {
   }
 
   //TRIVIA
-  const [numOfQuestions, setNumOfQuestions] = useState(5)
+  const [numOfQuestions, setNumOfQuestions] = useState(6)
   const [difficulty, setDifficulty] = useState('easy')
   const [trivia, setTrivia] = useState([])
 
