@@ -10,7 +10,7 @@ import {useState} from 'react'
   const [winStreak, setWinStreak] = useState([0 , 0])
   const [winner, setWinner] = useState(false)
   const [opponent, setOpponent] = useState(false)
-  const [dificulty, setDifficulty] = useState("")
+  const [difficulty, setDifficulty] = useState("")
   const [columns, setColumns] = useState([
     [],
     [],
@@ -71,6 +71,13 @@ import {useState} from 'react'
       }
       columnHover(number)
       checkWin()
+      computerTurn()
+    }
+  }
+
+  const computerTurn = () =>{
+    if(difficulty === 'Random' && playerTurn % 2 != 0){
+      let value = Math.floor(Math.random() * 7)
     }
   }
 
