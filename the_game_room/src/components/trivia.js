@@ -15,6 +15,10 @@ const Trivia = (props) => {
     props.setDifficulty()
   }
 
+  const submitPlayers = () => {
+    props.setNumOfPlayers()
+  }
+
   let answers = [props.trivia[questionNumber].incorrectAnswers[0], props.trivia[questionNumber].incorrectAnswers[1], props.trivia[questionNumber].incorrectAnswers[2], props.trivia[questionNumber].correctAnswer]
 
   const shuffleArray = array => {
@@ -57,6 +61,8 @@ const Trivia = (props) => {
   const playTrivia = () => {
     props.getTrivia()
     setView('readyToPlay')
+    console.log('numOfQuestions ' + props.numOfQuestions)
+    console.log('NumOfPlayers ' + props.numOfPlayers)
   }
 
   const playAgain = () => {
@@ -78,18 +84,29 @@ const Trivia = (props) => {
         <br/>
         <h1 id="main-title">Are you ready to play trivia?</h1>
         <h1>Choose your settings:</h1>
-          <form>
+        <form>
+          <label className="set-buttons">Number of players/teams:    </label>
+          <select defaultValue={{ label: "Please choose", value: '' }} onChange={(e) => {
+            props.setNumOfPlayers(e.target.value)
+          }} required>
+            <option disabled="disabled" value="">Please choose</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <br/>
             <label className="set-buttons">Number of questions:    </label>
-            <select value={props.numOfQuestions} onChange={(e) => {
-              props.setNumOfQuestions(e.target.value)
-            }}>
+            <select defaultValue={{ label: "Please choose", value: '' }} onChange={(e) => {
+              props.setNumOfQuestions(e.target.value * props.numOfPlayers)
+            }} required>
+              <option disabled="disabled" value="">Please choose</option>
               <option value="6">5</option>
               <option value="11">10</option>
               <option value="21">20</option>
             </select>
+            <br/>
 
-          </form>
-          <form>
             <label className="set-buttons">Difficulty:    </label>
             <select value={props.difficulty} onChange={(e) => {
               props.setDifficulty(e.target.value)
