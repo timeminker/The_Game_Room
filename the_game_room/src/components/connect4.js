@@ -61,15 +61,18 @@ import {useState} from 'react'
   const columnClick = (number) => {
     if(gameState){
       if(columns[number].length < 6){
-        setPlayerTurn(playerTurn+1)
-        if(playerTurn % 2 == 0){
-          setColor('red')
-        }else{
-          setColor('yellow')
+        if('Player'){
+          setPlayerTurn(playerTurn+1)
         }
         columns[number].push(color)
+        if(color === 'red'){
+          setColor('yellow')
+        } else{
+          setColor('red')
+        }
       }
       columnHover(number)
+      computerTurn()
       checkWin()
       computerTurn()
     }
@@ -81,17 +84,27 @@ import {useState} from 'react'
     }
   }
 
+  const computerTurn = () =>{
+    if(difficulty === 'Random'){
+      let value = Math.floor(Math.random() * 7)
+      columns[value].push('yellow')
+    }
+  }
+
   const checkWin = () => {
     checkVertical()
     checkHorizontal()
     leftDiagnol()
     rightDiagnol()
+    if(opponent === 'Computer'){
+      setColor('red')
+    }
   }
 
   const checkVertical = () =>{
     for(let i = 0; i<columns.length; i++){
       for(let j = 0; j <= 2; j++){
-        if(columns[i][j] == color && columns[i][j+1] == color && columns[i][j+2] == color && columns[i][j+3] == color){
+        if(columns[i][j] == 'red' && columns[i][j+1] == 'red' && columns[i][j+2] == 'red' && columns[i][j+3] == 'red' || columns[i][j] == 'yellow' && columns[i][j+1] == 'yellow' && columns[i][j+2] == 'yellow' && columns[i][j+3] == 'yellow'){
           console.log(color + ' wins!')
           setGameState(false)
           setHighlightCell("")
@@ -106,7 +119,7 @@ import {useState} from 'react'
   const checkHorizontal = () =>{
     for(let i = 0; i<=3; i++){
       for(let j = 0; j<columns.length;j++){
-        if(columns[i][j] == color && columns[i+1][j] == color && columns[i+2][j] == color && columns[i+3][j] == color ){
+        if(columns[i][j] == 'red' && columns[i+1][j] == 'red' && columns[i+2][j] == 'red' && columns[i+3][j] == 'red' || columns[i][j] == 'yellow' && columns[i+1][j] == 'yellow' && columns[i+2][j] == 'yellow' && columns[i+3][j] == 'yellow'  ){
           console.log(color + ' wins!')
           setGameState(false)
           setHighlightCell("")
@@ -121,7 +134,7 @@ import {useState} from 'react'
   const leftDiagnol = () =>{
     for(let i = 0; i <= 3; i++){
       for(let j = 0; j <= 2;j++){
-        if(columns[i][j] == color && columns[i+1][j+1] == color && columns[i+2][j+2] == color && columns[i+3][j+3] == color){
+        if(columns[i][j] == 'red' && columns[i+1][j+1] == 'red' && columns[i+2][j+2] == 'red' && columns[i+3][j+3] == 'red' || columns[i][j] == 'yellow' && columns[i+1][j+1] == 'yellow' && columns[i+2][j+2] == 'ywllow' && columns[i+3][j+3] == 'yellow' ){
           console.log(color + ' wins!')
           setGameState(false)
           setHighlightCell("")
@@ -136,7 +149,7 @@ import {useState} from 'react'
   const rightDiagnol = () =>{
     for(let i = columns.length-1;i >= 3;i--){
       for(let j = 0; j<=2; j++){
-        if(columns[i][j] == color && columns[i-1][j+1] == color && columns[i-2][j+2] == color && columns[i-3][j+3] == color){
+        if(columns[i][j] == 'red' && columns[i-1][j+1] == 'red' && columns[i-2][j+2] == 'red' && columns[i-3][j+3] == 'red' || columns[i][j] == 'yellow' && columns[i-1][j+1] == 'yellow' && columns[i-2][j+2] == 'yellow' && columns[i-3][j+3] == 'yellow' ){
           console.log(color + ' wins!')
           setGameState(false)
           setHighlightCell("")
