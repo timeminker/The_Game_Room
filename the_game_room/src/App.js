@@ -38,6 +38,7 @@ function App() {
   //TRIVIA
   const [numOfQuestions, setNumOfQuestions] = useState(6)
   const [difficulty, setDifficulty] = useState('easy')
+  const [numOfPlayers, setNumOfPlayers] = useState(1)
   const [trivia, setTrivia] = useState([])
 
   const getTrivia = () => {
@@ -67,7 +68,7 @@ function App() {
       : null}
 
       {view === 'trivia' ?
-        <Trivia triviaView={triviaView} trivia={trivia} numOfQuestions={numOfQuestions} setNumOfQuestions={setNumOfQuestions} difficulty={difficulty} setDifficulty={setDifficulty} getTrivia={getTrivia}/>
+        <Trivia triviaView={triviaView} trivia={trivia} numOfQuestions={numOfQuestions} setNumOfQuestions={setNumOfQuestions} difficulty={difficulty} setDifficulty={setDifficulty} getTrivia={getTrivia} setNumOfPlayers={setNumOfPlayers} numOfPlayers={numOfPlayers}/>
       : null}
     </>
   );
