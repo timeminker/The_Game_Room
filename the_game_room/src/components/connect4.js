@@ -20,6 +20,7 @@ import {useState} from 'react'
     [],
     []
   ])
+  let computerAct = true
 
   const opponentChoice = (choice) => {
     setOpponent(choice)
@@ -77,7 +78,7 @@ import {useState} from 'react'
   }
 
   const computerTurn = () =>{
-    if(difficulty === 'Random'){
+    if(difficulty === 'Random' && computerAct == true){
       let value = Math.floor(Math.random() * 7)
       columns[value].push('yellow')
       setColor('red')
@@ -101,6 +102,7 @@ import {useState} from 'react'
           setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
           checkWinStreak()
           setWinner(true)
+          computerAct = false
         }
       }
     }
@@ -115,6 +117,7 @@ import {useState} from 'react'
           setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
           checkWinStreak()
           setWinner(true)
+          computerAct = false
         }
       }
     }
@@ -129,6 +132,7 @@ import {useState} from 'react'
           setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
           checkWinStreak()
           setWinner(true)
+          computerAct = false
         }
       }
     }
@@ -143,6 +147,7 @@ import {useState} from 'react'
           setPlayerTurn(columns[0].length+columns[1].length+columns[2].length+columns[3].length+columns[4].length+columns[5].length+columns[6].length)
           checkWinStreak()
           setWinner(true)
+          computerAct = false
           }
         }
       }
