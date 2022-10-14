@@ -20,7 +20,7 @@ import {useState} from 'react'
     [],
     []
   ])
-  let computerAct = true
+  let computerAct = false
 
   const opponentChoice = (choice) => {
     setOpponent(choice)
@@ -52,6 +52,7 @@ import {useState} from 'react'
   }
 
   const checkWinStreak = () =>{
+    console.log(playerTurn)
     if(playerTurn % 2 != 0){
       setWinStreak([winStreak[0]+1 , 0])
     }else {
