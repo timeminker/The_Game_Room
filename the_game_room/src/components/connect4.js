@@ -20,7 +20,7 @@ import {useState} from 'react'
     [],
     []
   ])
-  let computerAct = false
+  let computerAct = true
 
   const opponentChoice = (choice) => {
     setOpponent(choice)
